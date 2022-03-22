@@ -18,15 +18,15 @@ View all free ideas
 View all partnership ideas
 View all paid ideas
 
-Messaging or email feature
+Messaging or email feature to connect users
 
 
-bonus:
+bonus if MVP is viable:
+view ideas by:
 free app/parner app/paid app
 free game/parner game/paid game
 free web/parner web/paid web
 keyword match for scripting language
 order by most liked posts instead of most recent
-
-
-
+personal ideas page
+coder rating
