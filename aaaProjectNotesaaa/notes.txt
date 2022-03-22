@@ -3,7 +3,30 @@ This is just a page where we can make random notes for ideas, copy and paste see
 here's Becket's phone number in case anyone needs to get in touch:
 917-930-4602
 
-  
+Goals for MVP:
+
+Homepage (view all ideas with the most recent first)
+Signup page
+Login page
+Create idea page
+Create comment page
+- Like functionality
+View all app ideas
+View all game ideas
+View all website ideas
+View all free ideas
+View all partnership ideas
+View all paid ideas
+
+Messaging or email feature
+
+
+bonus:
+free app/parner app/paid app
+free game/parner game/paid game
+free web/parner web/paid web
+keyword match for scripting language
+order by most liked posts instead of most recent
 
 
 
