@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS ihaveanideafora;
+DROP DATABASE IF EXISTS ideafora;
 
-CREATE DATABASE ihaveanideafora;
+CREATE DATABASE ideafora;
