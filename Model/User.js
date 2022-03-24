@@ -37,7 +37,7 @@ User.init(
             }
         },
         role: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             //pick from dropdown, idea - 1, coder - 2, both - 3
             allowNull: false,
         },

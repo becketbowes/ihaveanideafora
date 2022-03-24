@@ -4,7 +4,7 @@ const sequelize = require('../Controller/connection');
 class Idea extends Model {
     static upvote(body, models) {
         return models.Upvote.create({
-            userkey:body.userkey,
+            userkey: body.userkey,
             ideakey: body.ideakey
         }).then(() => {
             return Idea.findOne({
@@ -54,7 +54,8 @@ Idea.init(
             allowNull: true
         },
         keywords: {
-            type: DataTypes.ARRAY,
+            type: DataTypes.STRING,
+            // Should this be string
             allowNull: true
         },
         text: {
