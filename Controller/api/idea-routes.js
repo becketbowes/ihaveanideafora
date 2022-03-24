@@ -71,7 +71,7 @@ router.delete('/:id', (req, res) => {
             res.status(404).json({ message: 'No idea found with this information' });
             return;
         }
-        res.json(dbUserData);
+        res.json(dbIdeaData);
     })
     .catch(err => {
         console.log(err);
