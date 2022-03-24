@@ -53,10 +53,10 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// POST create user 
+// POST to Create User  
 router.post('/' , (req, res) => {
-    // Expects {username: , email: , password: }
-    // Should this route also expect { role: , image: , and about me? }
+    // Expects { username: , email: , password: }
+    // Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
         username: req.body.username,
         email: req.body.email,
