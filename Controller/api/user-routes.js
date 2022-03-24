@@ -12,8 +12,9 @@ router.get('/', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+});
 
-// GET to Find One User 
+        // GET to Find One User 
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -32,7 +33,7 @@ router.get('/:id', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-}
+});
 
 // PUT to Update User 
 router.put('/:id', (req, res) => {
@@ -56,7 +57,7 @@ router.put('/:id', (req, res) => {
 // POST to Create User  
 router.post('/' , (req, res) => {
     // Expects { username: , email: , password: }
-    // Should this route also expect { role: , image: , and About Me: ,? }
+    // POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
         username: req.body.username,
         email: req.body.email,

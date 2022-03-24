@@ -11,7 +11,7 @@ router.post('/' , (req, res) => {
         coding_languages: req.body.coding_languages,
         text: req.body.text,
     })
-        .then(dbIdeaData => res.json(dbIdeaData)
+        .then(dbIdeaData => res.json(dbIdeaData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id,
             username: req.params.username,
-            keywords: req.params.keywords,
+            keywords: req.params.keywords
         }
     })
         .then(dbIdeaData => {
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-}
+    });
 
 // PUT to Update Idea
 router.put('/:id', (req, res) => {
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
         if(!dbIdeaData[0]) {
             res.status(404).json({ message: 'No idea found with this information' });
         }
-        res.json(dbIdeaData;
+        res.json(dbIdeaData);
     })
     .catch(err => {
         console.log(err);
