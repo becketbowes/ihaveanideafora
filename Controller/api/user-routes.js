@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-        // GET to Find One User 
+// GET to Find One User 
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
