@@ -1,0 +1,24 @@
+<header>
+    <h1>ideafora</h1>
+</header>
+<nav class="navigate">
+    <span><button>--------post an idea ->--------</button></span>
+    <span><button>--------find an idea ->--------</button></span>
+    <span><button>-----------logout ->-----------</button></span>
+</nav>
+{{#if ideafind}}
+<nav>
+    <span>
+        <br>
+        <button>----offer type ->----</button>
+        <button>-----category ->-----</button>
+        <button>-----language ->-----</button>
+        <button>----view order ->----</button>
+    </span>
+</nav>
+{{/if}}
+<div class="contain">
+    <div class="contained">
+{{> idea data}}
+    </div>
+</div>
