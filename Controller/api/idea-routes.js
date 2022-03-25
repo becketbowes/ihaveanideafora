@@ -1,5 +1,15 @@
 const router = require('express').Router();
-const { Idea } = require('../../Model/Idea');
+const { Idea } = require('../../Model');
+
+// GET all ideas
+router.get('/', (req,res) => {
+    Idea.findAll()
+    .then(dbIdeaData => res.json(dbIdeaData))
+    .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+    });
+})
 
 
 // POST to Create Idea 

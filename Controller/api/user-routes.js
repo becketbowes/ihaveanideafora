@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../Model/User');
+const { User } = require('../../Model');
 
 // GET to Find All Users 
 router.get('/', (req, res) => {
@@ -59,9 +59,12 @@ router.post('/' , (req, res) => {
     // Expects { username: , email: , password: }
     // (add) POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
-        username: req.body.username,
+        name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
+        image: req.body.image,
+        aboutme: req.body.aboutme
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {

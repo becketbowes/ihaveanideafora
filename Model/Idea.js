@@ -16,7 +16,10 @@ class Idea extends Model {
                     'title',
                     'coding_languages', 
                     'keywords',
-                    'text', 
+                    'short_text',
+                    'text',
+                    'idea_type',
+                    'offer_type',
                     'userkey',
                     'created_at',
                     [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE idea.id = upvote.ideakey)'), 'upvote_count']
@@ -58,12 +61,28 @@ Idea.init(
             // Should this be string
             allowNull: true
         },
+        short_text: {
+            type: DataTypes.STRING(500),
+            allowNull: true,
+        },
         text: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]
             }
+        },
+        idea_type: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        offer_type: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        idea_type: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         userkey: {
             type: DataTypes.INTEGER,
