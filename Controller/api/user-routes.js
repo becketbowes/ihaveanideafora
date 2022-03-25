@@ -37,7 +37,8 @@ router.get('/:id', (req, res) => {
 
 // PUT to Update User 
 router.put('/:id', (req, res) => {
-    User.update(res.body, {
+    User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
@@ -45,6 +46,7 @@ router.put('/:id', (req, res) => {
     .then(dbUserData => {
         if(!dbUserData[0]) {
             res.status(404).json({ message: 'No user found with this id' });
+            return;
         }
         res.json(dbUserData);
     })
@@ -75,7 +77,7 @@ router.post('/' , (req, res) => {
 
 // DELETE to Remove User  
 router.delete('/:id', (req, res) => {
-    User.destory({
+    User.destroy({
         where: {
             id: req.params.id
         }

@@ -4,18 +4,21 @@ const Comment = require('./Comment');
 const Upvote = require('./Upvote');
 
 User.hasMany(Idea, {
-    foreignKey: 'userkey'
+    foreignKey: 'userkey',
+    onDelete: 'SET NULL'
 });
 
 Idea.belongsTo(User, {
     foreignKey: 'userkey',
-    //Do we need ONDELETE?  Should we keep ideas even if user is deleted?
+    onDelete: 'SET NULL'
+    // Do we need ONDELETE?  Should we keep ideas even if user is deleted?
 });
 
 User.belongsToMany(Idea, {
     through: Upvote,
     as: 'upvoted_ideas',
     foreignKey: 'userkey',
+    onDelete: 'SET NULL'
     // We should match previous ONDELETE decision
 });
 
@@ -37,15 +40,18 @@ Upvote.belongsTo(Idea, {
 });
 
 User.hasMany(Upvote, {
-    foreignKey: 'userkey'
+    foreignKey: 'userkey',
+    onDelete: 'SET NULL'
 });
 
 Idea.hasMany(Upvote, {
-    foreignKey: 'ideakey'
+    foreignKey: 'ideakey',
+    onDelete: 'SET NULL'
 });
 
 Comment.belongsTo(User, {
     foreignKey: 'userkey',
+    onDelete: 'SET NULL'
     //Same question Re: ONDELETE
 });
 
@@ -55,12 +61,14 @@ Comment.belongsTo(Idea, {
 });
 
 User.hasMany(Comment, {
-    foreignKey: 'userkey'
+    foreignKey: 'userkey',
+    onDelete: 'SET NULL'
     //Same onDelete question
 });
 
 Idea.hasMany(Comment, {
-    foreignKey: 'ideakey'
+    foreignKey: 'ideakey',
+    onDelete: 'SET NULL'
 });
 
 module.exports = { User, Idea, Upvote, Comment };
