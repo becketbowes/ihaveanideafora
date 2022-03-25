@@ -1,0 +1,78 @@
+:root {
+    --dark:rgb(0, 3, 38);
+    --darkish:rgb(0, 5, 62);
+    --lightish:rgb(196, 201, 255);
+    --light:rgb(235, 237, 255);
+}
+
+* {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0 0 1px var(--darkish);
+    font-size: medium;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 500;
+    text-shadow: 0 0 3px var(--darkish);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+h5 {
+    color: var(--darkish);
+}
+ 
+h6 {
+    font-weight: 200;
+    color: var(--darkish);
+    margin: 10px;
+}
+
+nav {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+div {
+    align-content: center;
+    align-content: center;
+}
+
+article {
+    margin: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    align-content: center;
+    font-weight: 500;
+}
+
+button {
+    border: none;
+    margin: none;
+    padding: none;
+}
+
+input {
+    border: none
+}
+
+footer {
+    margin-top: 130px;
+    text-align: right;
+}
