@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../Model/User');
+const { User } = require('../../Model');
 
 // GET to Find All Users 
 router.get('/', (req, res) => {
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-        // GET to Find One User 
+// GET to Find One User 
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -37,7 +37,8 @@ router.get('/:id', (req, res) => {
 
 // PUT to Update User 
 router.put('/:id', (req, res) => {
-    User.update(res.body, {
+    User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
@@ -45,6 +46,7 @@ router.put('/:id', (req, res) => {
     .then(dbUserData => {
         if(!dbUserData[0]) {
             res.status(404).json({ message: 'No user found with this id' });
+            return;
         }
         res.json(dbUserData);
     })
@@ -59,9 +61,12 @@ router.post('/' , (req, res) => {
     // Expects { username: , email: , password: }
     // (add) POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
-        username: req.body.username,
+        name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
+        image: req.body.image,
+        aboutme: req.body.aboutme
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -72,7 +77,7 @@ router.post('/' , (req, res) => {
 
 // DELETE to Remove User  
 router.delete('/:id', (req, res) => {
-    User.destory({
+    User.destroy({
         where: {
             id: req.params.id
         }

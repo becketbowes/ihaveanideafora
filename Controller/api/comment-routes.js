@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment } = require('../../Model/Comment');
+const { Comment } = require('../../Model');
 
 //get all comments
 
@@ -11,6 +11,22 @@ Comment.findAll()
     res.status(500).json(err);
     });
 });
+
+//get comment by id
+
+router.get('/:id', (req, res) => {
+    Comment.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbCommentData => res.json(dbCommentData))
+        .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+        });
+    });
+    
 
 //post new comment
 

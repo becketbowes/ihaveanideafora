@@ -1,5 +1,15 @@
 const router = require('express').Router();
-const { Idea } = require('../../Model/Idea');
+const { Idea } = require('../../Model');
+
+// GET all ideas
+router.get('/', (req,res) => {
+    Idea.findAll()
+    .then(dbIdeaData => res.json(dbIdeaData))
+    .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+    });
+})
 
 
 // POST to Create Idea 
@@ -9,7 +19,13 @@ router.post('/' , (req, res) => {
     Idea.create({
         title: req.body.title,
         coding_languages: req.body.coding_languages,
+        keywords: req.body.keywords,
+        short_text: req.body.short_text,
         text: req.body.text,
+        idea_type: req.body.idea_type,
+        offer_type: req.body.offer_type,
+        userkey: req.body.userkey
+        // will update user_key to req.session.user_key
     })
         .then(dbIdeaData => res.json(dbIdeaData))
         .catch(err => {
@@ -20,11 +36,11 @@ router.post('/' , (req, res) => {
 
 // GET to Find One Idea 
 router.get('/:id', (req, res) => {
-    User.findOne({
+    Idea.findOne({
         where: {
             id: req.params.id,
-            username: req.params.username,
-            keywords: req.params.keywords
+            // username: req.params.username,
+            // keywords: req.params.keywords
         }
     })
         .then(dbIdeaData => {
@@ -42,7 +58,7 @@ router.get('/:id', (req, res) => {
 
 // PUT to Update Idea
 router.put('/:id', (req, res) => {
-    Idea.update(res.body, {
+    Idea.update(req.body, {
         where: {
             id: req.params.id
         }
@@ -61,7 +77,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE to Remove Idea  
 router.delete('/:id', (req, res) => {
-    Idea.destory({
+    Idea.destroy({
         where: {
             id: req.params.id
         }
