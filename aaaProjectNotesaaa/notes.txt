@@ -3,7 +3,11 @@ This is just a page where we can make random notes for ideas, copy and paste see
 here's Becket's phone number in case anyone needs to get in touch:
 917-930-4602
 
+ideafora
+tinder for nerds
+
 Goals for MVP:
+
 
 Homepage (view all ideas with the most recent first)
 Signup page
@@ -22,6 +26,7 @@ Messaging or email feature to connect users
 
 
 bonus if MVP is viable:
+pictures added 
 view ideas by:
 free app/parner app/paid app
 free game/parner game/paid game
