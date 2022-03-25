@@ -1,11 +1,15 @@
-const {  } = require("sequelize/types/query-types");
+const {} = require("sequelize/types/query-types");
 const sequelize = require("../Controller/connection");
 
 const userdata = [
   {
-    username: "",
+    id: 23,
+    name: "",
     email: "",
     password: "",
+    role: "",
+    image: "",
+    aboutme: "ahdfsdkh sjdhfjksh ksdhkfhskjh kjshdfjh",
   },
 ];
 

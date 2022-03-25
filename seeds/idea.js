@@ -4,6 +4,9 @@ const ideadata = [
   {
     id: "",
     title: "",
-    coding: "",
+    coding_language: "",
+    keywords: "",
+    text: "djklsfhkdsfkhsdf",
+    userkey: 21,
   },
 ];
