@@ -1,0 +1,71 @@
+<header>
+    <h1>ideafora</h1>
+</header>
+<nav class="navigate">
+    <span class="navbutton"><button>--------home ->------</button></span>
+    <span class="navbutton"><button>--------faqs ->------</button></span>
+    <span class="navbutton"><button>---post an idea ->---</button></span>
+    <span class="navbutton"><button>---find an idea ->---</button></span>
+    <span class="navbutton"><button>------logout ->------</button></span>
+</nav>
+<div class="contain">
+    <div class="contained">
+        <article class="idea">
+            <h3>{{title}}</h3>
+            <h6>{{created_at}}}</h6>
+            <h6>{{idea-type}}</h6>
+            <h6>{{offer-type}}</h6>
+            <h6>{{coding_languages}}</h6>
+            <h6>{{keywords}}</h6>
+            <div class="ideatext">
+                <span>
+                    {{short-text}}
+                </span>
+            </div>
+            <div class="ideatext">
+                <span>
+                    {{text}}
+                </span>
+            </div>
+            <h6><button id="loveit">-> love it!</button>{{upvote.number}} people loved this</h6>
+            <h6><button id="contact">contact {{user}}</button></h6>
+            <div class="ideatext">--------</div>
+        </article>
+
+        <div>
+            <h5>Comments:</h5>
+        </div>
+        {{#each comments as |comment|}}
+        <section class="comments">
+            <h6>On {{comment.date}}, {{comment.user}} wrote:</h6>
+            <div>
+                {{comment.text}}
+            </div>
+            <div class="ideatext">---</div>
+        </section>
+        {{/each}}
+
+        <section class="commentform">
+            <div>
+                <h5>If you'd like to leave a comment, please be constructive. Suggest existing projects that the
+                    user might look at, suggest coding languages that they should include to attract the right
+                    people to help them, link to other people trying to get similar things made, etc.</h5>
+            </div>
+            <div>
+                <div>
+                    <label for="commentfield">Add a Comment:</label>
+                </div>
+                <div>
+                    <textarea name="commentfield" id="commentfield"></textarea>
+                </div>
+                <div>
+                    <label for="commentsubmit">Submit your helpful comment:</label>
+                </div>
+                <div class="submitbutton">
+                    <button id="commentsubmit">Submit -></button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{{!-- link to idea script and navigation script --}}

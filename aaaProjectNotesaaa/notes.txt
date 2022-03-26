@@ -35,3 +35,22 @@ keyword match for scripting language
 order by most liked posts instead of most recent
 personal ideas page
 coder rating
+
+list of pages to make:
+loginidea list
+idea pagecontact pagewarning before writing pagetest of warning before writing pagefaq pagecompose page edit page
+
+menu itemshome faq ideasort postidea logout
+on Idea tableidea-type column add: -other
+extra table:Conversationbelongs to many UserUser has many-id INT-codertext TEXT can be null-inventortext TEXT can be null-coderkey INT not null fkUser-inventorkey INT not null fk User
+claudia:research email notification api to find one where we can send one email per day IF there are messages in conversation
+
+
+list of pages to make:
+loginidea list
+idea pagecontact pagewarning before writing pagetest of warning before writing pagefaq pagecompose page edit page
+
+menu itemshome faq ideasort postidea logout
+on Idea tableidea-type column add: -other
+extra table:Conversationbelongs to many UserUser has many-id INT-codertext TEXT can be null-inventortext TEXT can be null-coderkey INT not null fkUser-inventorkey INT not null fk User
+claudia:research email notification api to find one where we can send one email per day IF there are messages in conversation
