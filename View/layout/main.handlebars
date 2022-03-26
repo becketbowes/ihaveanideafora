@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/stylelight.css">
+    {{#if lightpage}}
+    <link rel="stylesheet" href="./assets/css/stylelight.css">
+    {{#else}}
+    <link rel="stylesheet" href="./assets/css/styledark.css">
+    {{/if}}
     <title>ideafora</title>
 </head>
-
 <body>
+
 {{{body}}}
+
     <footer>
-        rights group3productions date
+        rights group3productions {{date}}
     </footer>
 </body>
 

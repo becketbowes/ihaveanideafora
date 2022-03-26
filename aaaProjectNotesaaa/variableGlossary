@@ -1,0 +1,8 @@
+in the Idea model, the offer value column with have the value 'tierone', 'tiertwo' etc. which 
+correspond to the following input values entered by User creating and Idea:
+                    <option value="tierone">20,000$ - 25,000$</option>
+                    <option value="tiertwo">25,000$ - 50,000$</option>
+                    <option value="tierthree">50,000$ - 75,000$</option>
+                    <option value="tierfour">75,000$ - 100,000$</option>
+                    <option value="tierfive">100,000$ - 250,000$</option>
+                    <option value="tiersix">250,000$ +</option>
