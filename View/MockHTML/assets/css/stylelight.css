@@ -20,6 +20,7 @@ header {
 
 .headimg {
     width: 80%;
+    background-color: var(--darkish);
 }
 
 h1 {
@@ -47,15 +48,27 @@ h6 {
     margin: 10px;
 }
 
+.contained {
+    margin-top: 50px;
+    border-top: 1px;
+    border-color: var(--darkish);
+}
+
 nav {
-    display: flex;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .navigate {
-    padding-top: 38px;
+    padding-top: 20px;
     width: 100%;
-    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.navbutton {
+    padding-top: 20px;
 }
 
 .welcome {
@@ -125,4 +138,13 @@ article {
 footer {
     margin-top: 130px;
     text-align: right;
+}
+
+/*media queries*/
+@media screen and (max-width: 1000px) {
+
+.navigate {
+    flex-direction: column;
+}    
+
 }
