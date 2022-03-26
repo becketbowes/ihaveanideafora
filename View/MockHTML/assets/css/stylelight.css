@@ -177,6 +177,16 @@ textarea {
     font-weight: 500;
 }
 
+.qanda {
+    margin-top: 33px;
+}
+
+.adminquestion {
+    margin-top: 55px;
+}
+
+
+
 footer {
     margin-top: 130px;
     text-align: right;
