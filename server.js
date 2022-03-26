@@ -29,7 +29,7 @@ app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "View/public")));
+app.use(express.static(path.join(__dirname, "Views/public")));
 
 app.use(require("./Controller/"));
 
