@@ -8,9 +8,9 @@
 * {
     font-family: 'Inconsolata', monospace;
     font-weight: 400;
-    background-color: var(--light);
-    color: var(--dark);
-    text-shadow: 0 0 1px var(--darkish);
+    background-color: var(--dark);
+    color: var(--light);
+    text-shadow: 0px 0px 1px var(--lightish);
     font-size: medium;
 }
 
@@ -18,15 +18,10 @@ header {
     text-align: center;
 }
 
-.headimg {
-    width: 80%;
-    background-color: var(--darkish);
-}
-
 h1 {
     font-size: 50px;
     font-weight: 500;
-    text-shadow: 0 0 3px var(--darkish);
+    text-shadow: 0 0 3px var(--lightish);
 }
 
 h2 {
@@ -39,19 +34,17 @@ h3 {
 }
 
 h5 {
-    color: var(--darkish);
+    color: var(--lightish);
 }
  
 h6 {
     font-weight: 200;
-    color: var(--darkish);
+    color: var(--lightish);
     margin: 10px;
 }
 
 .contained {
     margin-top: 50px;
-    border-top: 1px;
-    border-color: var(--darkish);
 }
 
 nav {
@@ -69,27 +62,6 @@ nav {
 
 .navbutton {
     padding-top: 20px;
-}
-
-.welcome {
-    margin-top: 20px;
-    align-content: center;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.welcomein {
-    width: 80%;
-}
-
-.contain {
-    padding-top: 20px;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.signup {
-    margin-top: 50px;
 }
 
 .left {
@@ -120,19 +92,68 @@ input {
 }
 
 button {
+    width: 100%;
     border: none;
     margin: none;
+    margin-top: 20px;
     padding: none;
 }
 
 select {
-    padding-top: 2px;
+    padding-top: 11px;
     border: none;
 }
 
 article {
     align-content: center;
     font-weight: 500;
+}
+
+.pagebody {
+    margin-top: 33px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagecontent {
+    width: 80%;
+}
+
+.intro {
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    height: 20px;
+    margin-top: 11px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0px 0px 1px var(--darkish);
+}
+
+.prompt {
+    margin-top: 38px;
+}
+
+.smalltext {
+    height: 20px;
+}
+
+.medtext {
+    height: 60px;
+}
+
+.bigtext {
+    height: 300px;
+}
+
+.composelect {
+    width: 100%;
 }
 
 footer {
