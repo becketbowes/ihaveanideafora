@@ -52,8 +52,11 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No idea found with this information' });
                 return;
             }
-            
-            res.json(dbIdeaData);
+
+            const idea = dbIdeaData.get({ plain: true })
+
+            res.render('idea', { idea, lightpage: true })
+            // res.json(dbIdeaData);
         })
         .catch(err => {
             console.log(err);

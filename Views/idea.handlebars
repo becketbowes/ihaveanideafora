@@ -11,24 +11,24 @@
 <div class="contain">
     <div class="contained">
         <article class="idea">
-            <h3>{{title}}</h3>
+            <h3>{{idea.title}}</h3>
             {{!-- <h6>{{created_at}}}</h6> --}}
-            <h6>{{idea-type}}</h6>
-            <h6>{{offer-type}}</h6>
-            <h6>{{coding_languages}}</h6>
-            <h6>{{keywords}}</h6>
+            <h6>{{idea.idea-type}}</h6>
+            <h6>{{idea.offer-type}}</h6>
+            <h6>{{idea.coding_languages}}</h6>
+            <h6>{{idea.keywords}}</h6>
             <div class="ideatext">
                 <span>
-                    {{short-text}}
+                    {{idea.short-text}}
                 </span>
             </div>
             <div class="ideatext">
                 <span>
-                    {{text}}
+                    {{idea.text}}
                 </span>
             </div>
             <h6><button id="loveit">-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6><button id="contact">contact {{user}}</button></h6>
+            <h6><button id="contact">contact {{user.name}}</button></h6>
             <div class="ideatext">--------</div>
         </article>
 

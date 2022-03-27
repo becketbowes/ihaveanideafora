@@ -54,7 +54,7 @@ router.get('/idea/:id', (req, res) => {
                 return;
             }
 
-            res.render('idea', { dbIdeaData, lightpage: true })
+            // res.render('idea', { dbIdeaData, lightpage: true })
             // res.json(dbIdeaData);
         })
         .catch(err => {
