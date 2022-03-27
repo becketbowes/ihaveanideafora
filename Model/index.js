@@ -2,6 +2,7 @@ const Idea = require('./Idea');
 const User = require('./User');
 const Comment = require('./Comment');
 const Upvote = require('./Upvote');
+const Conversation = require('./Conversation');
 
 User.hasMany(Idea, {
     foreignKey: 'userkey',
@@ -71,4 +72,17 @@ Idea.hasMany(Comment, {
     onDelete: 'SET NULL'
 });
 
-module.exports = { User, Idea, Upvote, Comment };
+User.belongsToMany(Conversation, {
+    through: 
+})
+
+User.hasMany(Conversation, {
+    foreignKey: 'userkey',
+    onDelete: 'SET NULL'
+});
+
+
+
+
+
+module.exports = { User, Idea, Upvote, Comment, Conversation };
