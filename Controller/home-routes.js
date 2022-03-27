@@ -35,6 +35,34 @@ router.get('/', (req,res) => {
     });
 })
 
+router.get('/idea/:id', (req, res) => {
+    Idea.findOne({
+        where: {
+            id: req.params.id,
+            // username: req.params.username,
+            // keywords: req.params.keywords
+        },
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        include: {
+            model: Comment,
+            attributes: ['text']
+        }
+    })
+        .then(dbIdeaData => {
+            if (!dbIdeaData) {
+                res.status(404).json({ message: 'No idea found with this information' });
+                return;
+            }
+
+            res.render('idea', { dbIdeaData, lightpage: true })
+            // res.json(dbIdeaData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    });
+
 router.get('/login', (req,res) => {
     res.render('login', { lightpage: true })
 })
