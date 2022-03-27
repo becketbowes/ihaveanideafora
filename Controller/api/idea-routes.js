@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Idea } = require('../../Model');
+const { Idea, Comment } = require('../../Model');
 
 // GET all ideas
 router.get('/', (req,res) => {
@@ -10,7 +10,6 @@ router.get('/', (req,res) => {
     res.status(500).json(err);
     });
 })
-
 
 // POST to Create Idea 
 router.post('/' , (req, res) => {
@@ -41,6 +40,11 @@ router.get('/:id', (req, res) => {
             id: req.params.id,
             // username: req.params.username,
             // keywords: req.params.keywords
+        },
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        include: {
+            model: Comment,
+            attributes: ['text']
         }
     })
         .then(dbIdeaData => {
@@ -48,6 +52,7 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No idea found with this information' });
                 return;
             }
+            
             res.json(dbIdeaData);
         })
         .catch(err => {

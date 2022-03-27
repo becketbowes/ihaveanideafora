@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
-const { Idea, User, Comment, Upvote } = require('../Model')
+const { Idea, User, Comment, Upvote } = require('../Model');
+const res = require('express/lib/response');
 
 
 router.get('/', (req,res) => {
@@ -20,14 +21,43 @@ router.get('/', (req,res) => {
     })
     .then(dbIdeaData => {
         const ideas = dbIdeaData.map(idea => idea.get({ plain: true })).reverse();
+        // const lightPage = true;
 
-        res.render('ideas', { ideas });
+        res.render('ideas', { 
+            ideas, 
+            lightpage: true,
+        });
         // add loggedIn: req.session.loggedIn
     })
     .catch(err => {
     console.log(err);
     res.status(500).json(err);
     });
+})
+
+router.get('/login', (req,res) => {
+    res.render('login', { lightpage: true })
+})
+
+router.get('/polite', (req,res) => {
+    res.render('polite', { lightpage: false })
+})
+
+router.get('/politetest', (req,res) => {
+    res.render('politetest', { lightpage: true })
+})
+
+router.get('/faq', (req,res) => {
+    res.render('faq', { lightpage: false })
+})
+
+router.get('/compose', (req,res) => {
+    res.render('compose', { lightpage: true })
+})
+
+router.get('/convo', (req,res) => {
+    // Conversation.findOne?
+    res.render('convo', { lightpage: false })
 })
 
 module.exports = router;
