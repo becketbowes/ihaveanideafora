@@ -12,14 +12,14 @@
     <div class="contained">
         <article class="idea">
             <h3>{{idea.title}}</h3>
-            {{!-- <h6>{{created_at}}}</h6> --}}
-            <h6>{{idea.idea-type}}</h6>
-            <h6>{{idea.offer-type}}</h6>
+            <h6>{{idea.created_at}}</h6>
+            <h6>{{idea.idea_type}}</h6>
+            <h6>{{idea.offer_type}}</h6>
             <h6>{{idea.coding_languages}}</h6>
             <h6>{{idea.keywords}}</h6>
             <div class="ideatext">
                 <span>
-                    {{idea.short-text}}
+                    {{idea.short_text}}
                 </span>
             </div>
             <div class="ideatext">
@@ -28,18 +28,18 @@
                 </span>
             </div>
             <h6><button id="loveit">-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6><button id="contact">contact {{user.name}}</button></h6>
+            <h6><button id="contact">contact {{idea.user.name}}</button></h6>
             <div class="ideatext">--------</div>
         </article>
 
         <div>
             <h5>Comments:</h5>
         </div>
-        {{#each comments as |comment|}}
+        {{#each idea.comments as |comment|}}
         <section class="comments">
-            <h6>On {{comment.date}}, {{comment.user}} wrote:</h6>
+            <h6>On {{created_at}}, {{user.name}} wrote:</h6>
             <div>
-                {{comment.text}}
+                {{text}}
             </div>
             <div class="ideatext">---</div>
         </section>

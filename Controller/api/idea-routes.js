@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Idea, Comment } = require('../../Model');
+const { Idea, Comment, User } = require('../../Model');
 
 // GET all ideas
 router.get('/', (req,res) => {
@@ -42,10 +42,20 @@ router.get('/:id', (req, res) => {
             // keywords: req.params.keywords
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
-        include: {
-            model: Comment,
-            attributes: ['text']
-        }
+        include: [
+            {
+                model: Comment,
+                attributes: ['text', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
+            },
+            {
+                model: User,
+                attributes: ['name']
+            }
+        ]
     })
         .then(dbIdeaData => {
             if (!dbIdeaData) {
@@ -54,7 +64,6 @@ router.get('/:id', (req, res) => {
             }
 
             const idea = dbIdeaData.get({ plain: true })
-
             res.render('idea', { idea, lightpage: true })
             // res.json(dbIdeaData);
         })
@@ -65,7 +74,7 @@ router.get('/:id', (req, res) => {
     });
 
 // PUT to Update Idea
-router.put('/:id', (req, res) => {
+router.put('/edit/:id', (req, res) => {
     Idea.update(req.body, {
         where: {
             id: req.params.id
@@ -75,6 +84,10 @@ router.put('/:id', (req, res) => {
         if(!dbIdeaData[0]) {
             res.status(404).json({ message: 'No idea found with this information' });
         }
+
+        // const idea = dbIdeaData.get({ plain: true })
+
+        // res.render('edit', { idea, lightpage: true });
         res.json(dbIdeaData);
     })
     .catch(err => {
