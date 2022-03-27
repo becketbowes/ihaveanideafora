@@ -1,0 +1,198 @@
+:root {
+    --dark:rgb(0, 3, 38);
+    --darkish:rgb(0, 5, 62);
+    --lightish:rgb(196, 201, 255);
+    --light:rgb(235, 237, 255);
+}
+
+* {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    background-color: var(--dark);
+    color: var(--light);
+    text-shadow: 0px 0px 1px var(--lightish);
+    font-size: medium;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 500;
+    text-shadow: 0 0 3px var(--lightish);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+h5 {
+    color: var(--lightish);
+}
+ 
+h6 {
+    font-weight: 200;
+    color: var(--lightish);
+    margin: 10px;
+}
+
+.contained {
+    margin-top: 50px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navigate {
+    padding-top: 20px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.label {
+    height: 30px;
+}
+
+.input {
+    height: 30px;
+}
+
+input {
+    height: 20px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    border: none;
+    margin: none;
+    margin-top: 20px;
+    padding: none;
+    font-weight: 500;
+}
+
+select {
+    margin-top: 11px;
+    border: none;
+    width: 100%;
+    height: 25px;
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0px 0px 1px var(--darkish);
+}
+
+article {
+    align-content: center;
+    font-weight: 500;
+}
+
+.pagebody {
+    margin-top: 33px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagecontent {
+    width: 80%;
+}
+
+.intro {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    height: 20px;
+    margin-top: 11px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0px 0px 1px var(--darkish);
+}
+
+.prompt {
+    margin-top: 38px;
+}
+
+.smalltext {
+    height: 20px;
+}
+
+.medtext {
+    height: 60px;
+}
+
+.bigtext {
+    height: 300px;
+}
+
+.messagedisplay {
+    padding: 8px;
+    width: 100%;
+    height: 400px;
+    background-color: var(--light);
+}
+
+.codertexttime,
+.codertext,
+.inventortexttime,
+.inventortext {
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0px 0px 1px var(--darkish);
+    width: 100%;
+}
+
+.inventortext {
+    text-align: right;
+}
+
+.codertexttime {
+    margin-top: 22px;
+    text-align: left;
+    font-weight: 300;
+    font-size: smaller;
+    color: var(--darkish);
+}
+
+.inventortexttime {
+    margin-top: 22px;
+    text-align: right;
+    font-weight: 300;
+    font-size: smaller;
+    color: var(--darkish);
+}
+
+.messagetext {
+    height: 20px;
+    padding: 8px;
+}
+
+footer {
+    margin-top: 130px;
+    text-align: right;
+}
+
+/*media queries*/
+@media screen and (max-width: 1000px) {
+
+.navigate {
+    flex-direction: column;
+}    
+
+}

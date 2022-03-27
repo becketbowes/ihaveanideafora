@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Idea } = require('../../Model');
+const { Idea, Comment, User } = require('../../Model');
 
 // GET all ideas
 router.get('/', (req,res) => {
@@ -10,7 +10,6 @@ router.get('/', (req,res) => {
     res.status(500).json(err);
     });
 })
-
 
 // POST to Create Idea 
 router.post('/' , (req, res) => {
@@ -41,14 +40,32 @@ router.get('/:id', (req, res) => {
             id: req.params.id,
             // username: req.params.username,
             // keywords: req.params.keywords
-        }
+        },
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        include: [
+            {
+                model: Comment,
+                attributes: ['text', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
+            },
+            {
+                model: User,
+                attributes: ['name']
+            }
+        ]
     })
         .then(dbIdeaData => {
             if (!dbIdeaData) {
                 res.status(404).json({ message: 'No idea found with this information' });
                 return;
             }
-            res.json(dbIdeaData);
+
+            const idea = dbIdeaData.get({ plain: true })
+            res.render('idea', { idea, lightpage: true })
+            // res.json(dbIdeaData);
         })
         .catch(err => {
             console.log(err);
@@ -57,7 +74,7 @@ router.get('/:id', (req, res) => {
     });
 
 // PUT to Update Idea
-router.put('/:id', (req, res) => {
+router.put('/edit/:id', (req, res) => {
     Idea.update(req.body, {
         where: {
             id: req.params.id
@@ -67,6 +84,10 @@ router.put('/:id', (req, res) => {
         if(!dbIdeaData[0]) {
             res.status(404).json({ message: 'No idea found with this information' });
         }
+
+        // const idea = dbIdeaData.get({ plain: true })
+
+        // res.render('edit', { idea, lightpage: true });
         res.json(dbIdeaData);
     })
     .catch(err => {
