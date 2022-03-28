@@ -21,7 +21,6 @@ Conversation.init(
         },
         coderKey: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: { 
                 model: 'User', 
                 key: 'id' 
@@ -29,7 +28,6 @@ Conversation.init(
         },
         inventorKey: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: { 
                 model: 'User', 
                 key: 'id' 
