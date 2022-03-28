@@ -43,21 +43,21 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbUserData => {
-        if(!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // POST to Create User  
-router.post('/' , (req, res) => {
+router.post('/', (req, res) => {
     // Expects { username: , email: , password: }
     // (add) POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
@@ -77,22 +77,16 @@ router.post('/' , (req, res) => {
 
 // DELETE to Remove User  
 router.delete('/:id', (req, res) => {
-    User.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(dbUserData => {
-        if(!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    User.destroy({ where: { id: req.params.id } })
+        .then(data => {
+            if (!data) {
+                res.status(404).json({ message: 'file not found' });
+                return;
+            }
+            res.json(data);
+        })
+        .catch(err => { console.log(err); res.status(500).json(err); });
 });
+
 
 module.exports = router;
