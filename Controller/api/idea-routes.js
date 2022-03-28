@@ -23,7 +23,7 @@ router.post('/' , (req, res) => {
         text: req.body.text,
         idea_type: req.body.idea_type,
         offer_type: req.body.offer_type,
-        userkey: req.body.userkey
+        userkey: req.session.userkey
         // will update user_key to req.session.user_key
     })
         .then(dbIdeaData => res.json(dbIdeaData))

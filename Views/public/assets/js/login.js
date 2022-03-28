@@ -19,24 +19,37 @@ async function loginHandler(event) {
         });
 
         if (response.ok) {
-            document.location.assign('/')
+            document.location.assign('/');
         } else {
-            alert(response.statusText)
+            alert(response.statusText);
         }
-
     }
 }
 
+async function signupHandler(event) {
+    event.preventDefault();
+    
+    const name = document.querySelector('#signup-username').value.trim();
+    const email = document.querySelector('#signup-email').value.trim();
+    const password = document.querySelector('#signup-password').value.trim();
+    const role = document.querySelector('#signup-role').value.trim();
 
+    if (name && email && password && role) {
+        const response = await fetch('/api/users', {
+            method: 'post',
+            body: JSON.stringify({
+                name, email, password, role
+            }),
+            headers: { 'Content-Type': 'application/json'}
+        });
 
+        if (response.ok) {
+            document.location.assign('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+}
 
-
-
-
-
-
-
-
-
-document.querySelector('.loginbutton').addEventListener("submit", loginHandler);
-document.querySelector('.signupbutton').addEventListener("submit", signupHandler);
+document.querySelector('.loginbutton').addEventListener("click", loginHandler);
+document.querySelector('.signupbutton').addEventListener("click", signupHandler);

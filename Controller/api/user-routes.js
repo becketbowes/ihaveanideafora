@@ -68,7 +68,15 @@ router.post('/' , (req, res) => {
         image: req.body.image,
         aboutme: req.body.aboutme
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            req.session.save(() => {
+                req.session.userkey = dbUserData.id;
+                req.session.name = dbUserData.name;
+                req.session.loggedIn = true;
+            });
+            
+            res.json(dbUserData)
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -94,7 +102,7 @@ router.post('/login', (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = dbUserData.id;
+            req.session.userkey = dbUserData.id;
             req.session.name = dbUserData.name;
             req.session.loggedIn = true;
 
