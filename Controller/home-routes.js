@@ -54,7 +54,7 @@ router.get('/idea/:id', (req, res) => {
                 return;
             }
 
-            // res.render('idea', { dbIdeaData, lightpage: true })
+            res.render('idea', { dbIdeaData, lightpage: true })
             // res.json(dbIdeaData);
         })
         .catch(err => {
@@ -72,7 +72,7 @@ router.get('/polite', (req,res) => {
 })
 
 router.get('/politetest', (req,res) => {
-    res.render('politetest', { lightpage: true })
+    res.render('politetest', { lightpage: false })
 })
 
 router.get('/faq', (req,res) => {
@@ -80,7 +80,7 @@ router.get('/faq', (req,res) => {
 })
 
 router.get('/compose', (req,res) => {
-    res.render('compose', { lightpage: true })
+    res.render('compose', { lightpage: false })
 })
 
 router.get('/convo', (req,res) => {
