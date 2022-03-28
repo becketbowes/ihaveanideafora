@@ -63,9 +63,9 @@ router.get('/:id', (req, res) => {
                 return;
             }
 
-            const idea = dbIdeaData.get({ plain: true })
-            res.render('idea', { idea, lightpage: true })
-            // res.json(dbIdeaData);
+            // const idea = dbIdeaData.get({ plain: true })
+            // res.render('idea', { idea, lightpage: true })
+            res.json(dbIdeaData);
         })
         .catch(err => {
             console.log(err);
