@@ -3,7 +3,7 @@
 // const res = require("express/lib/response");
 
 function toQuizButtonHandler() {
-    document.location.replace('/politetest');
+    document.location.assign('/politetest');
 }
 
 document.querySelector('#proceedtoquiz').addEventListener("click", toQuizButtonHandler);
