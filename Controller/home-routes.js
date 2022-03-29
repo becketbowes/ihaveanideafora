@@ -93,6 +93,7 @@ router.get('/convo', (req,res) => {
     res.render('convo', { lightpage: false })
 })
 
+
 router.get('/find', (req,res) => { res.render('ideas', { lightpage: true, findidea: true })})
 
 module.exports = router;

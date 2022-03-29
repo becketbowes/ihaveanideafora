@@ -120,15 +120,25 @@ textarea {
     height: 30px;
 }
 
+.prompt {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 input {
     height: 20px;
     border: none;
 }
 
+
 button, a {
+    width: 100%;
     border: none;
     margin: none;
+    margin-top: 30px;
     padding: none;
+    font-weight: 500;
 }
 
 select {
@@ -146,3 +156,12 @@ footer {
     margin-top: 130px;
     text-align: right;
 }
+
+/*media queries*/
+@media screen and (max-width: 1000px) {
+
+    .navigate {
+        flex-direction: column;
+    }    
+    
+    }
