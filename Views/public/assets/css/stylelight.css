@@ -131,7 +131,8 @@ input {
     border: none;
 }
 
-button {
+
+button, a {
     width: 100%;
     border: none;
     margin: none;

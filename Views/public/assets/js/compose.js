@@ -16,7 +16,7 @@ async function postIdeaHandler(event) {
     const short_text = document.querySelector('#short-text').value.trim();
     const text = document.querySelector('#text').value.trim();
 
-    if (title && text) {
+    if (title && short_text) {
         const response = await fetch('/api/ideas', {
             method: 'post',
             body: JSON.stringify({
@@ -34,3 +34,7 @@ async function postIdeaHandler(event) {
 }
 
 document.querySelector('#submit').addEventListener("click", postIdeaHandler);
+document.querySelector('#idea-type').selectedIndex = -1;
+document.querySelector('#offer-type').selectedIndex = -1;
+document.querySelector('#offer-value').selectedIndex = -1;
+document.querySelector('#coding-languages').selectedIndex = -1;

@@ -26,6 +26,7 @@ router.get('/', (req,res) => {
         res.render('ideas', { 
             ideas, 
             lightpage: true,
+            loggedIn: req.session.loggedIn
         });
         // add loggedIn: req.session.loggedIn
     })
@@ -38,14 +39,16 @@ router.get('/', (req,res) => {
 router.get('/idea/:id', (req, res) => {
     Idea.findOne({
         where: {
-            id: req.params.id,
-            // username: req.params.username,
-            // keywords: req.params.keywords
+            id: req.params.id
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
         include: {
             model: Comment,
-            attributes: ['text']
+            attributes: ['text', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['name']
+            }
         }
     })
         .then(dbIdeaData => {
@@ -54,7 +57,9 @@ router.get('/idea/:id', (req, res) => {
                 return;
             }
 
-            res.render('idea', { dbIdeaData, lightpage: true })
+            const idea = dbIdeaData.get({ plain: true })
+
+            res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn })
             // res.json(dbIdeaData);
         })
         .catch(err => {
@@ -64,7 +69,7 @@ router.get('/idea/:id', (req, res) => {
     });
 
 router.get('/login', (req,res) => {
-    res.render('login', { lightpage: true })
+    res.render('login', { noNav: true, lightpage: true, loggedIn: req.session.loggedIn })
 })
 
 router.get('/polite', (req,res) => {
@@ -88,8 +93,7 @@ router.get('/convo', (req,res) => {
     res.render('convo', { lightpage: false })
 })
 
-router.get('/find', (req,res) => { 
-    res.render('ideas', { lightpage: true, findidea: true })
-})
+
+router.get('/find', (req,res) => { res.render('ideas', { lightpage: true, findidea: true })})
 
 module.exports = router;
