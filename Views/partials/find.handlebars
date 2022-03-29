@@ -1,39 +1,54 @@
 <nav class="navigate">
-    <select id="offer-type" class="navselect"><button>offer -></button></span>
-        <option value="null">-></option>
-        <option value="free">-> free</option>
-        <option value="paid">-> paid</option>
-        <option value="negotiable">-> negotiable</option>
-    </select>
-    <select id="idea-type" class="navselect"><button>category -></button></span>
-        <option value="null">-></option>
-        <option value="app">-> app</option>
-        <option value="game">-> game</option>
-        <option value="website">-> website</option>
-        <option value="program">-> program</option>
-        <option value="other">-> other</option>
-    </select>
-    <select id="coding-languages" class="navselect"><button>language -></button></span>
-        <option value="null">-></option>
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="JAVASCRIPT">JAVASCRIPT</option>
-        <option value="C#">C#</option>
-        <option value="C++">C++</option>
-        <option value="PHP">PHP</option>
-        <option value="RUBY">RUBY</option>
-        <option value="JAVA">JAVA</option>
-        <option value="PYTHON">PYTHON</option>
-        <option value="SHELL">SHELL</option>
-        <option value="SWIFT">SWIFT</option>
-        <option value="OBJECTIVEC">OBJECTIVE C</option>
-        <option value="SCALA">SCALA</option>
-        <option value="C">C</option>
-        <option value="TYPESCRIPT">TYPESCRIPT</option>
-    </select>
-    <select id="orderby" class="navselect"><button>order -></button></span>
-        <option value="mostlikes">-> most likes</option>
-        <option value="mostrecent">-> most recent</option>
-    </select>
-    <span class="navbutton"><button>FIND -></button></span>
+    <div class="prompt">
+        <label for="offer">Offer:</label>
+        <select id="offer" class="navselect">
+            <option value="null">-></option>
+            <option value="free">-> free</option>
+            <option value="paid">-> paid</option>
+            <option value="negotiable">-> negotiable</option>
+        </select>
+    </div>
+    <div class="prompt">
+        <label for="category">Idea category:</label>
+        <select name="category" id="category" class="navselect">
+            <option value="null">-></option>
+            <option value="app">-> app</option>
+            <option value="game">-> game</option>
+            <option value="website">-> website</option>
+            <option value="program">-> program</option>
+            <option value="other">-> other</option>
+        </select>
+    </div>
+    <div class="prompt">
+        <label for="languages">Language:</label>
+        <select id="languages" class="navselect">
+            <option value="null">-></option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JAVASCRIPT">JAVASCRIPT</option>
+            <option value="C#">C#</option>
+            <option value="C++">C++</option>
+            <option value="PHP">PHP</option>
+            <option value="RUBY">RUBY</option>
+            <option value="JAVA">JAVA</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="SHELL">SHELL</option>
+            <option value="SWIFT">SWIFT</option>
+            <option value="OBJECTIVEC">OBJECTIVE C</option>
+            <option value="SCALA">SCALA</option>
+            <option value="C">C</option>
+            <option value="TYPESCRIPT">TYPESCRIPT</option>
+        </select>
+    </div>
+    <div class="prompt">
+        <label for="order">Result order:</label>
+        <select id="order" class="navselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+        </select>
+    </div>
+
+        <span class="navbutton" class="find"><button>FIND -></button></span>
+
 </nav>
