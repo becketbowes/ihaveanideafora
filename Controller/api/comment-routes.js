@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Comment.create ({
         text: req.body.text,
-        userkey: req.body.userkey,
+        userkey: req.session.userkey,
         ideakey: req.body.ideakey
     })
     .then(dbCommentData => res.json(dbCommentData))

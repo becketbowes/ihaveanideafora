@@ -3,6 +3,7 @@
 //signup call: onclick "signupbutton" create new user, res.render ideas page, else return error
 
 
+
 async function loginHandler(event) {
     event.preventDefault();
     
@@ -16,10 +17,11 @@ async function loginHandler(event) {
                 email, password
             }),
             headers: { 'Content-Type': 'application/json'}
-        });
+        })
 
         if (response.ok) {
             document.location.assign('/');
+            // console.log("success")
         } else {
             alert(response.statusText);
         }
@@ -53,3 +55,5 @@ async function signupHandler(event) {
 
 document.querySelector('.loginbutton').addEventListener("click", loginHandler);
 document.querySelector('.signupbutton').addEventListener("click", signupHandler);
+
+document.querySelector('#signup-role').selectedIndex = -1;
