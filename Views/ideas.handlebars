@@ -10,6 +10,7 @@
 </nav> --}}
 
 {{!-- {{#if findanidea}} --}}
+
 <nav class="findideas">
     <select id="offer-type" class="navselect"><button>----offer type ->----</button></span>
         <option value="null">-></option>
@@ -57,13 +58,13 @@
     <div class="contained">
         <article class="idea">
             <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
-            <h6>{{date}}</h6>
-            <h6>{{idea-type}}, {{offer-type}}, {{coding_languages}}, {{keywords}}</h6>
+            <h6>{{created_at}}</h6>
+            <h6>{{idea_type}}, {{offer_type}}, {{coding_languages}}, {{keywords}}</h6>
             <span>
-                {{short-text}}
+                {{short_text}}
             </span>
             <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6>{{comment.user.username}} commented: {{comment}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
+            <h6>{{comment.user.name}} commented: {{comment.text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
             <span>-----</span>
         </article>
     </div>

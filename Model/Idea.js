@@ -68,9 +68,9 @@ Idea.init(
         text: {
             type: DataTypes.TEXT,
             allowNull: true,
-            validate: {
-                len: [1]
-            }
+            // validate: {
+            //     len: [1]
+            // }
         },
         idea_type: {
             type: DataTypes.STRING,

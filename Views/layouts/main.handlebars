@@ -15,10 +15,10 @@
     <title>ideafora</title>
 </head>
 <body>
+    {{#unless noNav}}
     <header>
         <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
     </header>
-    {{!-- {{#if loggedIn}} --}}
     <nav class="navigate">
         {{!-- <span class="navbutton"> --}}
             <a href="/" style="text-decoration: none;">--------home ->------</a>
@@ -33,18 +33,25 @@
             <a href="/" style="text-decoration: none;">---find an idea ->---</a>
         {{!-- </span> --}}
         {{!-- <span class="navbutton"> --}}
+            {{#if req.session.loggedIn}}
             <button id="logout">------logout ->------</button>
+            {{else}}
+            <a href="/login" style="text-decoration: none;">-------login ->------</a>
+            {{/if}}
         {{!-- </span> --}}
     </nav>
-    {{!-- {{/if}} --}}
+    {{/unless}}
 
 {{{body}}}
 
     <footer>
         rights group3productions {{date}}
     </footer>
+
+
+    
 </body>
-
+    {{#if loggedIn}}
+    <script src="/assets/js/logout.js"></script>
+    {{/if}}
 </html>
-
-<script src="/assets/js/logout.js"></script>

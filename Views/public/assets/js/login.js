@@ -17,10 +17,11 @@ async function loginHandler(event) {
                 email, password
             }),
             headers: { 'Content-Type': 'application/json'}
-        });
+        })
 
         if (response.ok) {
             document.location.assign('/');
+            // console.log("success")
         } else {
             alert(response.statusText);
         }

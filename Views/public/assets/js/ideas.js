@@ -7,4 +7,4 @@
 
 // write logic for find an idea find all with VALUE && VALUE && VALUE, order by VALUE, res.render ideas.handlebars with values
 
-console.log("javascript connected");
+console.log("ideas.js javascript connected");

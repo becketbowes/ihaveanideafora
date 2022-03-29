@@ -68,7 +68,7 @@ router.get('/idea/:id', (req, res) => {
     });
 
 router.get('/login', (req,res) => {
-    res.render('login', { lightpage: true })
+    res.render('login', { noNav: true, lightpage: true })
 })
 
 router.get('/polite', (req,res) => {
