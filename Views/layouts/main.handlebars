@@ -15,6 +15,28 @@
     <title>ideafora</title>
 </head>
 <body>
+    <header>
+        <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
+    </header>
+    {{!-- {{#if loggedIn}} --}}
+    <nav class="navigate">
+        {{!-- <span class="navbutton"> --}}
+            <a href="/" style="text-decoration: none;">--------home ->------</a>
+        {{!-- </span> --}}
+        {{!-- <span class="navbutton"> --}}
+            <a href="/faq" style="text-decoration: none;">--------faqs ->------</a>
+        {{!-- </span> --}}
+        {{!-- <span class="navbutton"> --}}
+            <a href="/compose" style="text-decoration: none;">---post an idea ->---</a>
+        {{!-- </span> --}}
+        {{!-- <span class="navbutton"> --}}
+            <a href="/" style="text-decoration: none;">---find an idea ->---</a>
+        {{!-- </span> --}}
+        {{!-- <span class="navbutton"> --}}
+            <button id="logout">------logout ->------</button>
+        {{!-- </span> --}}
+    </nav>
+    {{!-- {{/if}} --}}
 
 {{{body}}}
 
@@ -24,3 +46,5 @@
 </body>
 
 </html>
+
+<script src="/assets/js/logout.js"></script>

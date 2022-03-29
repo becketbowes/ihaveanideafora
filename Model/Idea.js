@@ -63,11 +63,11 @@ Idea.init(
         },
         short_text: {
             type: DataTypes.STRING(500),
-            allowNull: true,
+            allowNull: false,
         },
         text: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
