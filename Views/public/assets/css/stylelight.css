@@ -140,6 +140,13 @@ button {
     font-weight: 500;
 }
 
+
+.loginbutton,
+.signupbutton {
+margin: none;
+text-align: left;
+}
+
 select {
     padding-top: 2px;
     border: none;
