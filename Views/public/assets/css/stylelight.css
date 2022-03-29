@@ -140,10 +140,9 @@ button {
     font-weight: 500;
 }
 
-
 .loginbutton,
 .signupbutton {
-margin: none;
+margin-top: none;
 text-align: left;
 }
 
