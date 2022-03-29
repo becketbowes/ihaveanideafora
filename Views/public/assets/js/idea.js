@@ -23,8 +23,6 @@ async function addCommentHandler() {
             alert(response.statusText);
         }
     }
-    
 }
-
 
 document.querySelector('#commentsubmit').addEventListener("click", addCommentHandler);

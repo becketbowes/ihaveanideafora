@@ -39,13 +39,15 @@ router.get('/idea/:id', (req, res) => {
     Idea.findOne({
         where: {
             id: req.params.id
-            // username: req.params.username,
-            // keywords: req.params.keywords
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
         include: {
             model: Comment,
-            attributes: ['text']
+            attributes: ['text', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['name']
+            }
         }
     })
         .then(dbIdeaData => {
