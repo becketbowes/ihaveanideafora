@@ -72,20 +72,22 @@ router.get('/polite', (req,res) => {
 })
 
 router.get('/politetest', (req,res) => {
-    res.render('politetest', { lightpage: true })
+    res.render('politetest', { lightpage: false })
 })
 
 router.get('/faq', (req,res) => {
-    res.render('faq', { lightpage: false })
+    res.render('faq', { lightpage: true })
 })
 
 router.get('/compose', (req,res) => {
-    res.render('compose', { lightpage: true })
+    res.render('compose', { lightpage: false })
 })
 
 router.get('/convo', (req,res) => {
     // Conversation.findOne?
     res.render('convo', { lightpage: false })
 })
+
+router.get('/find', (req,res) => { res.render('ideas', { lightpage: true, findidea: true })})
 
 module.exports = router;

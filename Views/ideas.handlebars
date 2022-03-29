@@ -2,55 +2,16 @@
     <h1>ideafora</h1>
 </header>
 <nav class="navigate">
-    <span class="navbutton"><button>--------home ->------</button></span>
-    <span class="navbutton"><button>--------faqs ->------</button></span>
-    <span class="navbutton"><button>---post an idea ->---</button></span>
-    <span class="navbutton"><button>---find an idea ->---</button></span>
-    <span class="navbutton"><button>------logout ->------</button></span>
+    <span class="navbutton"><button name="home" class="home">--------home ->------</button></span>
+    <span class="navbutton"><button name="faqs" class="faqs">--------faqs ->------</button></span>
+    <span class="navbutton"><button name="post" class="post">---post an idea ->---</button></span>
+    <span class="navbutton"><button name="find" class="find">---find an idea ->---</button></span>
+    <span class="navbutton"><button name="logout" class="logout">------logout ->------</button></span>
 </nav>
 
 {{#if findidea}}
-<nav class="findideas">
-    <select id="offer-type" class="navselect"><button>----offer type ->----</button></span>
-        <option value="null">-></option>
-        <option value="free">-> free</option>
-        <option value="paid">-> paid</option>
-        <option value="negotiable">-> negotiable</option>
-    </select>
-    <select id="idea-type" class="navselect"><button>-----category ->-----</button></span>
-        <option value="null">-></option>
-        <option value="app">-> app</option>
-        <option value="game">-> game</option>
-        <option value="website">-> website</option>
-        <option value="program">-> program</option>
-        <option value="other">-> other</option>
-    </select>
-    <select id="coding-languages" class="navselect"><button>--coding language ->-</button></span>
-        <option value="null">-></option>
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="JAVASCRIPT">JAVASCRIPT</option>
-        <option value="C#">C#</option>
-        <option value="C++">C++</option>
-        <option value="PHP">PHP</option>
-        <option value="RUBY">RUBY</option>
-        <option value="JAVA">JAVA</option>
-        <option value="PYTHON">PYTHON</option>
-        <option value="SHELL">SHELL</option>
-        <option value="SWIFT">SWIFT</option>
-        <option value="OBJECTIVEC">OBJECTIVE C</option>
-        <option value="SCALA">SCALA</option>
-        <option value="C">C</option>
-        <option value="TYPESCRIPT">TYPESCRIPT</option>
-    </select>
-    <select id="orderby" class="navselect"><button>----view order ->----</button></span>
-        <option value="mostlikes">-> most likes</option>
-        <option value="mostrecent">-> most recent</option>
-    </select>
-    <span class="navbutton"><button>------- FIND ->------</button></span>
-</nav>
-{{{/if}}
-
+{{> find}}
+{{/if}}
 
 <div class="contain">
     {{#each ideas as |idea|}}
@@ -60,7 +21,7 @@
             <h6>{{date}}</h6>
             <h6>{{idea-type}}, {{offer-type}}, {{coding_languages}}, {{keywords}}</h6>
             <span>
-                {{short-text}}
+                {{short_text}}
             </span>
             <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6>
             <h6>{{comment.user.username}} commented: {{comment}} <button>see more comments -></button></h6>
@@ -69,4 +30,5 @@
     </div>
     {{/each}}
 </div>
+<script src="/assets/js/navigation.js"></script>
 {{!-- navigation script and ideas script --}}
