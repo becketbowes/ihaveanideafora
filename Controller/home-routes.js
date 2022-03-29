@@ -26,6 +26,7 @@ router.get('/', (req,res) => {
         res.render('ideas', { 
             ideas, 
             lightpage: true,
+            loggedIn: req.session.loggedIn
         });
         // add loggedIn: req.session.loggedIn
     })
@@ -58,7 +59,7 @@ router.get('/idea/:id', (req, res) => {
 
             const idea = dbIdeaData.get({ plain: true })
 
-            res.render('idea', { idea, lightpage: false })
+            res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn })
             // res.json(dbIdeaData);
         })
         .catch(err => {
@@ -68,7 +69,7 @@ router.get('/idea/:id', (req, res) => {
     });
 
 router.get('/login', (req,res) => {
-    res.render('login', { noNav: true, lightpage: true })
+    res.render('login', { noNav: true, lightpage: true, loggedIn: req.session.loggedIn })
 })
 
 router.get('/polite', (req,res) => {

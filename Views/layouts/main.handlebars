@@ -33,7 +33,7 @@
             <a href="/" style="text-decoration: none;">---find an idea ->---</a>
         {{!-- </span> --}}
         {{!-- <span class="navbutton"> --}}
-            {{#if req.session.loggedIn}}
+            {{#if loggedIn}}
             <button id="logout">------logout ->------</button>
             {{else}}
             <a href="/login" style="text-decoration: none;">-------login ->------</a>
