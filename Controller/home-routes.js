@@ -38,7 +38,7 @@ router.get('/', (req,res) => {
 router.get('/idea/:id', (req, res) => {
     Idea.findOne({
         where: {
-            id: req.params.id,
+            id: req.params.id
             // username: req.params.username,
             // keywords: req.params.keywords
         },
@@ -54,7 +54,9 @@ router.get('/idea/:id', (req, res) => {
                 return;
             }
 
-            res.render('idea', { dbIdeaData, lightpage: true })
+            const idea = dbIdeaData.get({ plain: true })
+
+            res.render('idea', { idea, lightpage: false })
             // res.json(dbIdeaData);
         })
         .catch(err => {

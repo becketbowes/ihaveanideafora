@@ -56,17 +56,19 @@
     {{#each ideas as |idea|}}
     <div class="contained">
         <article class="idea">
-            <h3>{{title}}</h3>
+            <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
             <h6>{{date}}</h6>
             <h6>{{idea-type}}, {{offer-type}}, {{coding_languages}}, {{keywords}}</h6>
             <span>
                 {{short-text}}
             </span>
             <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6>{{comment.user.username}} commented: {{comment}} <button>see more comments -></button></h6>
+            <h6>{{comment.user.username}} commented: {{comment}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
             <span>-----</span>
         </article>
     </div>
     {{/each}}
 </div>
 {{!-- navigation script and ideas script --}}
+
+<script src="/assets/js/ideas.js"></script>
