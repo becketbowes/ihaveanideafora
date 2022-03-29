@@ -106,7 +106,7 @@ input {
     border: none;
 }
 
-button {
+button, a {
     border: none;
     margin: none;
     padding: none;

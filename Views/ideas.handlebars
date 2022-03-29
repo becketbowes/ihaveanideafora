@@ -1,4 +1,4 @@
-<header>
+{{!-- <header>
     <h1>ideafora</h1>
 </header>
 <nav class="navigate">
@@ -7,9 +7,10 @@
     <span class="navbutton"><button>---post an idea ->---</button></span>
     <span class="navbutton"><button>---find an idea ->---</button></span>
     <span class="navbutton"><button>------logout ->------</button></span>
-</nav>
+</nav> --}}
 
 {{!-- {{#if findanidea}} --}}
+
 <nav class="findideas">
     <select id="offer-type" class="navselect"><button>----offer type ->----</button></span>
         <option value="null">-></option>
@@ -56,17 +57,19 @@
     {{#each ideas as |idea|}}
     <div class="contained">
         <article class="idea">
-            <h3>{{title}}</h3>
-            <h6>{{date}}</h6>
-            <h6>{{idea-type}}, {{offer-type}}, {{coding_languages}}, {{keywords}}</h6>
+            <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
+            <h6>{{created_at}}</h6>
+            <h6>{{idea_type}}, {{offer_type}}, {{coding_languages}}, {{keywords}}</h6>
             <span>
-                {{short-text}}
+                {{short_text}}
             </span>
             <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6>{{comment.user.username}} commented: {{comment}} <button>see more comments -></button></h6>
+            <h6>{{comment.user.name}} commented: {{comment.text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
             <span>-----</span>
         </article>
     </div>
     {{/each}}
 </div>
 {{!-- navigation script and ideas script --}}
+
+<script src="/assets/js/ideas.js"></script>

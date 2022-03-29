@@ -1,4 +1,4 @@
-<header>
+{{!-- <header>
     <h1>ideafora</h1>
 </header>
 <nav class="navigate">
@@ -7,7 +7,7 @@
     <span class="navbutton"><button>---post an idea ->---</button></span>
     <span class="navbutton"><button>---find an idea ->---</button></span>
     <span class="navbutton"><button>------logout ->------</button></span>
-</nav>
+</nav> --}}
 <div class="contain">
     <div class="contained">
         <article class="idea">
@@ -27,7 +27,7 @@
                     {{idea.text}}
                 </span>
             </div>
-            <h6><button id="loveit">-> love it!</button>{{upvote.number}} people loved this</h6>
+            <h6><button id="loveit">-> love it!</button>{{idea.upvote.number}} people loved this</h6>
             <h6><button id="contact">contact {{idea.user.name}}</button></h6>
             <div class="ideatext">--------</div>
         </article>
@@ -69,3 +69,5 @@
     </div>
 </div>
 {{!-- link to idea script and navigation script --}}
+
+<script src="/assets/js/idea.js"></script>
