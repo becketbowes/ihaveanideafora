@@ -32,6 +32,9 @@ Conversation.init(
                 model: 'User', 
                 key: 'id' 
             }
+        },
+        read: {
+            type: DataTypes.BOOLEAN
         }
     },
     {
