@@ -1,18 +1,3 @@
-{{!-- <header>
-    <h1>ideafora</h1>
-</header>
-<nav class="navigate">
-
-
-    <span class="navbutton"><button>--------home ->------</button></span>
-    <span class="navbutton"><button>--------faqs ->------</button></span>
-    <span class="navbutton"><button>---post an idea ->---</button></span>
-    <span class="navbutton"><button>---find an idea ->---</button></span>
-    <span class="navbutton"><button>------logout ->------</button></span>
-</nav> --}}
-
-{{!-- {{#if findanidea}} --}}
-
 <nav class="findideas">
     <select id="offer-type" class="navselect"><button>----offer type ->----</button></span>
         <option value="null">-></option>
@@ -52,9 +37,6 @@
     </select>
     <span class="navbutton"><button>------- FIND ->------</button></span>
 </nav>
-{{!-- {{/if}} --}}
-
-
 
 <div class="contain">
     {{#each ideas as |idea|}}
@@ -73,8 +55,6 @@
     </div>
     {{/each}}
 </div>
-
-{{!-- navigation script and ideas script --}}
 
 <script src="/assets/js/ideas.js"></script>
 

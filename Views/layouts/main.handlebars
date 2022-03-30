@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
-    {{#if lightpage}}
-    <link rel="stylesheet" href="/assets/css/stylelight.css">
-    {{else}}
-    <link rel="stylesheet" href="/assets/css/styledark.css">
-    {{/if}}
-    <title>ideafora</title>
-</head>
-<body>
-    {{#unless noNav}}
-    <header>
-        <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
-    </header>
-    <nav class="navigate">
-        {{!-- <span class="navbutton"> --}}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
+        {{#if lightpage}}
+        <link rel="stylesheet" href="/assets/css/stylelight.css">
+        {{else}}
+        <link rel="stylesheet" href="/assets/css/styledark.css">
+        {{/if}}
+        <title>ideafora</title>
+    </head>
+    <body>
+        {{#unless noNav}}
+        <header>
+            <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
+        </header>
+        <nav class="navigate">
             <a href="/" style="text-decoration: none;">--------home ->------</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
             <a href="/faq" style="text-decoration: none;">--------faqs ->------</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
             <a href="/compose" style="text-decoration: none;">---post an idea ->---</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
             <a href="/" style="text-decoration: none;">---find an idea ->---</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
             {{#if loggedIn}}
-            <button id="logout">------logout ->------</button>
+            <button id="logout">--------user ->------</button>
             {{else}}
             <a href="/login" style="text-decoration: none;">-------login ->------</a>
             {{/if}}
-        {{!-- </span> --}}
-    </nav>
-    {{/unless}}
+        </nav>
+        {{/unless}}
 
-{{{body}}}
+    {{{body}}}
 
-    <footer>
-        rights group3productions {{date}}
-    </footer>
-
-
-    
-</body>
+        <footer>
+            rights group3productions {{date}}
+        </footer>
+    </body>
     {{#if loggedIn}}
     <script src="/assets/js/logout.js"></script>
     {{/if}}
