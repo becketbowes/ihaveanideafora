@@ -19,7 +19,7 @@ Comment.belongsTo(User, { foreignKey: 'userkey', onDelete: 'SET NULL' });
 Comment.belongsTo(Idea, { foreignKey: 'ideakey', onDelete: 'SET NULL' });
 Upvote.belongsTo(Idea, { foreignKey: 'ideakey', onDelete: 'SET NULL' });
 Upvote.belongsTo(User, { foreignKey: 'userkey', onDelete: 'SET NULL' });
-Conversation.belongsTo(User, { foreignKey: 'inventorKey', onDelete: 'SET NULL' });
-Conversation.belongsTo(User, { foreignKey: 'coderKey', onDelete: 'SET NULL' });
+Conversation.belongsTo(User, { foreignKey: 'inventorkey', onDelete: 'SET NULL' });
+Conversation.belongsTo(User, { foreignKey: 'coderkey', onDelete: 'SET NULL' });
 
 module.exports = { User, Idea, Upvote, Comment, Conversation };
