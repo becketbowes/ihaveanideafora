@@ -1,46 +1,7 @@
-<nav class="findideas">
-    <select id="offer-type" class="navselect"><button>----offer type ->----</button></span>
-        <option value="null">-></option>
-        <option value="free">-> free</option>
-        <option value="paid">-> paid</option>
-        <option value="negotiable">-> negotiable</option>
-    </select>
-    <select id="idea-type" class="navselect"><button>-----category ->-----</button></span>
-        <option value="null">-></option>
-        <option value="app">-> app</option>
-        <option value="game">-> game</option>
-        <option value="website">-> website</option>
-        <option value="program">-> program</option>
-        <option value="other">-> other</option>
-    </select>
-    <select id="coding-languages" class="navselect"><button>--coding language ->-</button></span>
-        <option value="null">-></option>
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="JAVASCRIPT">JAVASCRIPT</option>
-        <option value="C#">C#</option>
-        <option value="C++">C++</option>
-        <option value="PHP">PHP</option>
-        <option value="RUBY">RUBY</option>
-        <option value="JAVA">JAVA</option>
-        <option value="PYTHON">PYTHON</option>
-        <option value="SHELL">SHELL</option>
-        <option value="SWIFT">SWIFT</option>
-        <option value="OBJECTIVEC">OBJECTIVE C</option>
-        <option value="SCALA">SCALA</option>
-        <option value="C">C</option>
-        <option value="TYPESCRIPT">TYPESCRIPT</option>
-    </select>
-    <select id="orderby" class="navselect"><button>----view order ->----</button></span>
-        <option value="mostlikes">-> most likes</option>
-        <option value="mostrecent">-> most recent</option>
-    </select>
-    <span class="navbutton"><button>------- FIND ->------</button></span>
-</nav>
-
 <div class="contain">
     {{#each ideas as |idea|}}
-    <div class="contained">
+    <a href="/idea/{{id}}">
+        <div class="contained">
         <article class="idea">
             <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
             <h6>{{created_at}}</h6>
@@ -53,6 +14,7 @@
             <span>-----</span>
         </article>
     </div>
+    </a>
     {{/each}}
 </div>
 

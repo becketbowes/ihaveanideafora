@@ -94,6 +94,10 @@ textarea {
     padding-right: 10%;
 }
 
+.contained {
+    margin-top: 50px;
+}
+
 .signup {
     margin-top: 50px;
 }
@@ -133,6 +137,7 @@ input {
 
 
 button, a {
+    text-decoration: none;
     width: 100%;
     border: none;
     margin: none;

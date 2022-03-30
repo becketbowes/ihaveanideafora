@@ -45,12 +45,8 @@ Conversation.init(
                 key: 'id' 
             }
         },
-        ideakey: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'idea',
-                key: 'id'
-            }
+        read: {
+            type: DataTypes.BOOLEAN
         }
     },
     {
