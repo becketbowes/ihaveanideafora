@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
 const { Idea, User, Comment, Upvote } = require('../Model');
-const res = require('express/lib/response');
-
 
 router.get('/', (req,res) => {
     Idea.findAll({
@@ -26,9 +24,9 @@ router.get('/', (req,res) => {
         res.render('ideas', { 
             ideas, 
             lightpage: true,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            username: req.session.username
         });
-        // add loggedIn: req.session.loggedIn
     })
     .catch(err => {
     console.log(err);
@@ -59,7 +57,7 @@ router.get('/idea/:id', (req, res) => {
 
             const idea = dbIdeaData.get({ plain: true })
 
-            res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn })
+            res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
             // res.json(dbIdeaData);
         })
         .catch(err => {
@@ -73,27 +71,27 @@ router.get('/login', (req,res) => {
 })
 
 router.get('/polite', (req,res) => {
-    res.render('polite', { lightpage: false })
+    res.render('polite', { lightpage: false, username: req.session.username })
 })
 
 router.get('/politetest', (req,res) => {
-    res.render('politetest', { lightpage: false })
+    res.render('politetest', { lightpage: false, username: req.session.username })
 })
 
 router.get('/faq', (req,res) => {
-    res.render('faq', { lightpage: true })
+    res.render('faq', { lightpage: true, username: req.session.username })
 })
 
 router.get('/compose', (req,res) => {
-    res.render('compose', { lightpage: false })
+    res.render('compose', { lightpage: false, username: req.session.username })
 })
 
-router.get('/convo', (req,res) => {
-    // Conversation.findOne?
-    res.render('convo', { lightpage: false })
+router.get('/find', (req,res) => { 
+    res.render('ideas', { lightpage: false, username: req.session.username, findidea: true })
 })
 
-
-router.get('/find', (req,res) => { res.render('ideas', { lightpage: true, findidea: true })})
+router.get('/user', (req,res) => { 
+    res.render('ideas', { lightpage: false, username: req.session.username })
+})
 
 module.exports = router;

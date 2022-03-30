@@ -20,27 +20,20 @@
         <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
     </header>
     <nav class="navigate">
-        {{!-- <span class="navbutton"> --}}
-            <a href="/" style="text-decoration: none;">--------home ->------</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
-            <a href="/faq" style="text-decoration: none;">--------faqs ->------</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
-            <a href="/compose" style="text-decoration: none;">---post an idea ->---</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
-            <a href="/" style="text-decoration: none;">---find an idea ->---</a>
-        {{!-- </span> --}}
-        {{!-- <span class="navbutton"> --}}
+               <a href="/">-------home ->------</a>
+            <a href="/faq">-------faqs ->------</a>
+        <a href="/compose">---post an idea ->--</a>
+           <a href="/find">---find an idea ->--</a>
             {{#if loggedIn}}
-            <button id="logout">------logout ->------</button>
+           <a href="/user">----{{username}}->--</a>
             {{else}}
-            <a href="/login" style="text-decoration: none;">-------login ->------</a>
+          <a href="/login">------login ->------</a>
             {{/if}}
-        {{!-- </span> --}}
     </nav>
     {{/unless}}
+    {{#if findidea}}
+    {{> find}}
+    {{/if}}
 
 {{{body}}}
 
