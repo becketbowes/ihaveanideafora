@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
-const { Idea, User, Comment, Upvote } = require('../Model');
+const { Idea, User, Comment, Upvote, Conversation } = require('../Model');
 
 router.get('/', (req,res) => {
     Idea.findAll({
@@ -12,6 +12,10 @@ router.get('/', (req,res) => {
             },
             {
                 model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
                 // attributes: ['id']
                 // to identify # of Comments per post?
             }
@@ -40,7 +44,12 @@ router.get('/idea/:id', (req, res) => {
             id: req.params.id
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
-        include: {
+        include: [
+            {
+                model: User,
+                attributes: ['name']
+            },
+            {
             model: Comment,
             attributes: ['text', 'created_at'],
             include: {
@@ -48,6 +57,7 @@ router.get('/idea/:id', (req, res) => {
                 attributes: ['name']
             }
         }
+    ]
     })
         .then(dbIdeaData => {
             if (!dbIdeaData) {
@@ -91,7 +101,38 @@ router.get('/find', (req,res) => {
 })
 
 router.get('/user', (req,res) => { 
-    res.render('ideas', { lightpage: false, username: req.session.username })
-})
+    User.findOne({
+        where: {
+            id: req.session.userkey
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'coderText', 'inventorText', 'coderKey', 'inventorKey', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // as: 'other_user',
+                    keys: 'coderKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'short_text']
+            }
+        ]
+    })
+    .then(dbUserData => {
+        // if (!dbIdeaData) {
+        //     res.status(404).json({ message: 'No user found with this information' });
+        //     return;
+        // }
+
+        const user = dbUserData.get({ plain: true });
+    
+        res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
 
 module.exports = router;

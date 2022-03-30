@@ -80,7 +80,7 @@ Idea.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        idea_type: {
+        offer_value: {
             type: DataTypes.STRING,
             allowNull: true,
         },

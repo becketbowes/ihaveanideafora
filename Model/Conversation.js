@@ -46,7 +46,8 @@ Conversation.init(
             }
         },
         read: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            allowNull: true
         }
     },
     {

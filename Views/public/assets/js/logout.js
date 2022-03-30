@@ -7,7 +7,7 @@ async function logout() {
     });
 
     if (response.ok) {
-        document.location.assign('/');
+        document.location.replace('/');
         console.log("logged out");
         json("logged out");
     } else {
