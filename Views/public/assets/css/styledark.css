@@ -74,6 +74,7 @@ input {
 }
 
 button, a {
+    text-decoration: none;
     width: 100%;
     border: none;
     margin: none;
