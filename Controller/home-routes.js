@@ -86,17 +86,12 @@ router.get('/compose', (req,res) => {
     res.render('compose', { lightpage: false, username: req.session.username })
 })
 
-router.get('/convo', (req,res) => {
-    // Conversation.findOne?
-    res.render('convo', { lightpage: false, username: req.session.username })
-})
-
 router.get('/find', (req,res) => { 
-    res.render('ideas', { lightpage: true, username: req.session.username, findidea: true })
+    res.render('ideas', { lightpage: false, username: req.session.username, findidea: true })
 })
 
 router.get('/user', (req,res) => { 
-    res.render('ideas', { lightpage: true, username: req.session.username })
+    res.render('ideas', { lightpage: false, username: req.session.username })
 })
 
 module.exports = router;

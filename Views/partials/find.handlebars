@@ -1,16 +1,23 @@
-<nav class="navigate">
-    <div class="prompt">
-        <label for="offer">Offer:</label>
-        <select id="offer" class="navselect">
+<nav class="findation">
+    <div class="findbox" id="offer">
+        <label for="offer"><h3>Find by Offer:</h3></label>
+        <select id="offer" class="findselect">
             <option value="null">-></option>
             <option value="free">-> free</option>
             <option value="paid">-> paid</option>
             <option value="negotiable">-> negotiable</option>
         </select>
+        <label for="order">Offer Order:</label>
+        <select id="order" class="findselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+        </select>
+        <span class="navbutton" class="find"><button>FIND -></button></span>
     </div>
-    <div class="prompt">
-        <label for="category">Idea category:</label>
-        <select name="category" id="category" class="navselect">
+    <div class="findbox" id="category">
+        <label for="category"><h3>Find by Category:</h3></label>
+        <select name="category" id="category" class="findselect">
             <option value="null">-></option>
             <option value="app">-> app</option>
             <option value="game">-> game</option>
@@ -18,10 +25,17 @@
             <option value="program">-> program</option>
             <option value="other">-> other</option>
         </select>
+        <label for="order">Category Order:</label>
+        <select id="order" class="findselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+        </select>
+        <span class="navbutton" class="find"><button>FIND -></button></span>
     </div>
-    <div class="prompt">
-        <label for="languages">Language:</label>
-        <select id="languages" class="navselect">
+    <div class="findbox" id="language">
+        <label for="languages"><h3>Find by Language:</h3></label>
+        <select id="languages" class="findselect">
             <option value="null">-></option>
             <option value="HTML">HTML</option>
             <option value="CSS">CSS</option>
@@ -39,16 +53,12 @@
             <option value="C">C</option>
             <option value="TYPESCRIPT">TYPESCRIPT</option>
         </select>
-    </div>
-    <div class="prompt">
-        <label for="order">Result order:</label>
-        <select id="order" class="navselect">
+        <label for="order">Language Order:</label>
+        <select id="order" class="findselect">
             <option value="null">-></option>
             <option value="mostlikes">-> most likes</option>
             <option value="mostrecent">-> most recent</option>
         </select>
+        <span class="navbutton" class="find"><button>FIND-></button></span>
     </div>
-
-        <span class="navbutton" class="find"><button>FIND -></button></span>
-
 </nav>

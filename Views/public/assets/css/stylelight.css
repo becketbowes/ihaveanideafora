@@ -94,6 +94,10 @@ textarea {
     padding-right: 10%;
 }
 
+.contained {
+    margin-top: 50px;
+}
+
 .signup {
     margin-top: 50px;
 }
