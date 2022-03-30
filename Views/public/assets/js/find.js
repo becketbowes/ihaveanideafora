@@ -17,7 +17,7 @@ async function findOffers() {
     if (offertype) {
         const res = await fetch('/find/offer', {
             method: 'GET',
-            body: JSON.stringify({ offer: offertype, offerOrder}),
+            body: JSON.stringify({ offer: offertype, order: offerOrder}),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
@@ -35,7 +35,7 @@ async function findCategories() {
     if (categorytype) {
         const res = await fetch('/find/category', {
             method: 'GET',
-            body: JSON.stringify({ category: categorytype, categoryOrder}),
+            body: JSON.stringify({ category: categorytype, order: categoryOrder}),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
@@ -53,7 +53,7 @@ async function findLanguages() {
     if (languagetype) {
         const res = await fetch('/find/language', {
             method: 'GET',
-            body: JSON.stringify({ language: languagetype, languageOrder}),
+            body: JSON.stringify({ language: languagetype, order: languageOrder}),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
