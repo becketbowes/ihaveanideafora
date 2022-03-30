@@ -25,7 +25,7 @@ Conversation.init(
         },
         text: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         // inventorText: {
         //     type: DataTypes.TEXT,

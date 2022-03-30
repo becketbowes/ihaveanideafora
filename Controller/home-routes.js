@@ -109,7 +109,7 @@ router.get('/user', (req,res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'coderText', 'inventorText', 'coderKey', 'inventorKey', 'read', 'created_at'],
+                attributes: ['id', 'text', 'coderkey', 'inventorkey', 'read', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
@@ -124,10 +124,10 @@ router.get('/user', (req,res) => {
         ]
     })
     .then(dbUserData => {
-        // if (!dbIdeaData) {
-        //     res.status(404).json({ message: 'No user found with this information' });
-        //     return;
-        // }
+    //     // if (!dbIdeaData) {
+    //     //     res.status(404).json({ message: 'No user found with this information' });
+    //     //     return;
+    //     // }
 
         const user = dbUserData.get({ plain: true });
     

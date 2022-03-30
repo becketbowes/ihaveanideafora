@@ -1,6 +1,6 @@
 <div class="pagebody">
     <div class="pagecontent">
-        <a href="/logout">Logout -></a>
+        <button id="logout">Logout -></button>
         {{#if newmessages.length}}
         <div class="intro">You have New Messages, {{user.name}}!</div>
         {{#each newmessage}}
@@ -33,10 +33,10 @@
         <h3>About {{user.name}}:</h3>
 
         {{#if user.image}}
-            {{user.image}}
+            <img width="100px" src="{{user.image}}" />
         {{/if}}
         {{#if user.aboutme}}
-            {{user.aboutme}}
+            <h5>{{user.aboutme}}</h5>
         {{/if}}
         <a href="userprofile">Update User profile</a>
 
