@@ -81,23 +81,23 @@ router.get('/login', (req,res) => {
 })
 
 router.get('/polite', (req,res) => {
-    res.render('polite', { lightpage: false, username: req.session.username })
+    res.render('polite', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/politetest', (req,res) => {
-    res.render('politetest', { lightpage: false, username: req.session.username })
+    res.render('politetest', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/faq', (req,res) => {
-    res.render('faq', { lightpage: true, username: req.session.username })
+    res.render('faq', { lightpage: true, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/compose', (req,res) => {
-    res.render('compose', { lightpage: false, username: req.session.username })
+    res.render('compose', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/find', (req,res) => { 
-    res.render('ideas', { lightpage: false, username: req.session.username, findidea: true })
+    res.render('ideas', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username, findidea: true })
 })
 
 router.get('/user', (req,res) => { 
@@ -113,7 +113,6 @@ router.get('/user', (req,res) => {
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
-                    // as: 'other_user',
                     keys: 'coderKey'
                 }
             },
