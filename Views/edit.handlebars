@@ -1,0 +1,65 @@
+<div class="pagebody">
+    <div class="pagecontent">
+        <main class="newidea">
+            <span class="intro">
+                <h3>Before you republish, a friendly reminder:</h3>
+                <h3>We Take No Responsibility.</h3>
+            </span>
+            <div class="prompt">
+                <label for="title">Two or three word title:</label>
+                <textarea name="title" id="title" class="smalltext">{{idea.title}}</textarea>
+            </div>
+            <div class="prompt">
+                <label for="idea-type">Idea type:</label>
+                <select name="idea-type" id="idea-type" class="composelect">
+                    <option value="app">-> app</option>
+                    <option value="game">-> game</option>
+                    <option value="program">-> program</option>
+                    <option value="website">-> website</option>
+                    <option value="other">-> other</option>
+                </select>
+            </div>
+            <div class="prompt">
+                <label for="offer-type">Offer type:</label>
+                <select name="offer-type" id="offer-type" class="composelect">
+                    <option value="free">-> Free - I just want this made.</option>
+                    <option value="partner">-> Partner - I would like to be involved.</option>
+                    <option value="paid">-> Paid - I will pay up front for this.</option>
+                </select>
+            </div>
+            <div class="prompt">
+                <label for="offer-value">If paid, Offer amount:</label>
+                <select name="value" id="offer-value" class="composelect">
+                    <option value="null">-></option>
+                    <option value="tierone">-> 20,000$ - 25,000$</option>
+                    <option value="tiertwo">-> 25,000$ - 50,000$</option>
+                    <option value="tierthree">-> 50,000$ - 75,000$</option>
+                    <option value="tierfour">-> 75,000$ - 100,000$</option>
+                    <option value="tierfive">-> 100,000$ - 250,000$</option>
+                    <option value="tiersix">-> 250,000$ +</option>
+                </select>
+            </div>
+            <div class="prompt">
+                <label for="coding-languages">Project languages:</label>
+                <textarea name="coding-languages" id="coding-languages" class="smalltext">{{idea.coding_languages}}</textarea>
+            </div>
+            <div class="prompt">
+                <label for="keywords">Keywords:</label>
+                <textarea name="keywords" id="keywords" class="smalltext">{{idea.keywords}}</textarea>
+            </div>
+            <div class="prompt">
+                <label for="short-text">300 Characters or less short pitch:</label>
+                <textarea name="short-text" id="short-text" class="medtext">{{idea.short_text}}</textarea>
+            </div>
+            <div class="prompt">
+                <label for="text">Long pitch/project description/offer explanation:</label>
+                <textarea name="text" id="text" class="bigtext">{{idea.text}}</textarea>
+            </div>
+            <div class="prompt">
+                <label for="submit">Everything look better?</label>
+                <button name="submit" id="submit">Republish It! -></button>
+            </div>
+        </main>
+    </div>
+</div>
+{{!-- navigation and edit js scripts here --}}

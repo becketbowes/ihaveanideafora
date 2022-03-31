@@ -1,0 +1,82 @@
+<div class="pagebody">
+    <div class="pagecontent">
+        <button id="logout">Logout -></button>
+        {{#if user.conversations.length}}
+        <div class="intro">You have New Messages, {{user.name}}!</div>
+        {{#each user.conversations as |conversation|}}
+        <div>
+            <h3>Message from {{user.name}}:</h3>
+            <h6 class="codertexttime">{{created_at}}</h6>
+            <span class="codertext">{{text}}</span>
+        </div>
+        <h6 data-user="{{user.id}}" id="user_id"><button id="contact">Respond to {{user.name}}</button></h6>
+
+            <section class="commentform">
+                <div>
+                    <div>
+                        <textarea class="medtext" name="messagefield" id="messagefield"></textarea>
+                    </div>
+                    <div>
+                        <label for="messagesubmit">Submit your helpful reply:</label>
+                    </div>
+                    <div class="submitbutton">
+                        <button id="messagesubmit">Reply -></button>
+                    </div>
+                </div>
+            </section>
+        {{/each}}
+        {{/if}}
+
+        <h3>About {{user.name}}:</h3>
+
+        {{#if user.image}}
+            <img width="100px" src="{{user.image}}" />
+        {{/if}}
+        {{#if user.aboutme}}
+            <h5>{{user.aboutme}}</h5>
+        {{/if}}
+        <a href="userprofile">Update User profile</a>
+
+        {{#if user.ideas.length}}
+        <h6>
+            You have {{user.ideas.length}} previous ideas.
+            <button id="previous">see previous posts-></button>
+        </h6>
+
+        <section id="previous-ideas" class="start-hidden">
+        {{#each user.ideas as |idea|}}
+        <a href="/idea/{{id}}">
+            <div class="contained">
+                <article class="idea">
+                    <a id="idea-{{id}}" href="/idea/{{id}}" class="start-hidden"><h3>{{title}}</h3></a>
+                    <h6>{{created_at}}</h6>
+                    <h6>
+                        {{#if idea_type}}{{idea_type}}, {{/if}}
+                        {{#if coding_languages}}{{coding_languages}}, {{/if}}
+                        {{#if keywords}}{{keywords}}, {{/if}}
+                        {{#if offer_type}}{{offer_type}}{{#if offer_value}}: {{offer_value}}{{/if}}{{/if}}
+                        </h6>
+                    <span>
+                        {{short_text}}
+                    </span>
+                    {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
+                    {{#if comments.length}}
+                    <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments no-style" href="/idea/{{id}}">see more comments -></a></h6>
+                    {{else}}
+                    <h6><a id="comment-{{id}}" class="to-comments start-hidden" href="/idea/{{id}}">add comments -></a></h6>
+                    {{/if}}
+                    <span>-----</span>
+                </article>
+            </div>    
+        </a>
+        {{/each}}
+        </section>
+        {{/if}}
+    </div>
+</div>
+
+<script src="/assets/js/logout.js"></script>
+{{#if user.conversations.length}}
+<script src="/assets/js/sendMessage.js"></script>
+{{/if}}
+<script src="/assets/js/seeIdeas.js"></script>

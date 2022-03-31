@@ -1,0 +1,180 @@
+:root {
+    --dark:rgb(0, 3, 38);
+    --darkish:rgb(0, 5, 62);
+    --lightish:rgb(196, 201, 255);
+    --light:rgb(235, 237, 255);
+}
+
+* {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    background-color: var(--light);
+    color: var(--dark);
+    text-shadow: 0 0 1px var(--darkish);
+    font-size: medium;
+}
+
+header {
+    text-align: center;
+}
+
+.headimg {
+    width: 80%;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 500;
+    text-shadow: 0 0 3px var(--darkish);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+h5 {
+    color: var(--darkish);
+}
+ 
+h6 {
+    font-weight: 200;
+    color: var(--darkish);
+    margin: 10px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+textarea {
+    width: 80%;
+    height: 80px;
+    background-color: var(--dark);
+    color: var(--light);
+    text-shadow: 0px 0px 1px var(--lightish);
+}
+
+.submitbutton {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.navigate {
+    margin-top: 60px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome {
+    margin-top: 20px;
+    align-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.welcomein {
+    width: 80%;
+}
+
+.contain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.no-style {
+    text-decoration: none;
+}
+
+.start-hidden {
+    display: none;
+}
+
+.contained {
+    margin-top: 50px;
+}
+
+.signup {
+    margin-top: 50px;
+}
+
+.left {
+    text-align: right;
+    width: 50%;
+}
+
+.right {
+    text-align: left;
+    width: 50%;
+}
+
+#nudgedown {
+    padding-top: 3px;
+}
+
+.label {
+    height: 30px;
+}
+
+.input {
+    height: 30px;
+}
+
+.prompt {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+input {
+    height: 20px;
+    border: none;
+}
+
+
+button, a {
+    text-decoration: none;
+    width: 100%;
+    border: none;
+    margin: none;
+    margin-top: 30px;
+    padding: none;
+    font-weight: 500;
+}
+
+select {
+    padding-top: 2px;
+    border: none;
+}
+
+article {
+    width: 80%;
+    align-content: center;
+    font-weight: 500;
+}
+
+footer {
+    margin-top: 130px;
+    text-align: right;
+}
+
+/*media queries*/
+@media screen and (max-width: 1000px) {
+
+    .navigate {
+        flex-direction: column;
+    }    
+    
+    }

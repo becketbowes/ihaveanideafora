@@ -1,0 +1,17 @@
+<article class="idea">
+    {{#each ideas as |idea|}}
+    <h3>{{title}}</h3>
+    <h6>{{created_at}}</h6>
+    <h6>{{idea_type}}, {{offer_type}}, languages: {{coding_languages}}, keywords: {{keywords}}</h6>
+    <span>
+        {{text}}
+    </span>
+    {{!-- <h6><button>-> love it!</button> {{lovecount}} people loved this.</h6> --}}
+    {{#if comments.length}}
+    <h6>commenter {{comment.user.name}} said: {{comment.text}} <button>see more comments -></button></h6>
+    {{else}}
+    <h6><button>Add comments -></button></h6>
+    {{/if}}
+    <span>-----</span>
+    {{/each}}
+</article>

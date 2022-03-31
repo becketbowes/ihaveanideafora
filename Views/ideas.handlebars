@@ -1,0 +1,32 @@
+<div class="contain">
+    {{#each ideas as |idea|}}
+    <a href="/idea/{{id}}">
+        <div class="contained">
+        <article class="idea">
+            <a id="idea-{{id}}" href="/idea/{{id}}" class="no-style"><h3>{{title}}</h3></a>
+            <h6>{{created_at}} by {{user.name}}</h6>
+            <h6>
+                {{#if idea_type}}{{idea_type}}, {{/if}}
+                {{#if coding_languages}}{{coding_languages}}, {{/if}}
+                {{#if keywords}}{{keywords}}, {{/if}}
+                {{#if offer_type}}{{offer_type}}{{#if offer_value}}: {{offer_value}}{{/if}}{{/if}}
+                </h6>
+            <span>
+                {{short_text}}
+            </span>
+            {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
+            {{#if comments.length}}
+            <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments no-style" href="/idea/{{id}}">see more comments -></a></h6>
+            {{else}}
+            <h6><a id="comment-{{id}}" class="to-comments no-style" href="/idea/{{id}}">add comments -></a></h6>
+            {{/if}}
+            <span>-----</span>
+        </article>
+    </div>
+    </a>
+    {{/each}}
+</div>
+
+<script src="/assets/js/ideas.js"></script>
+
+

@@ -1,0 +1,82 @@
+<div class="contain">
+    <div class="contained">
+        <article class="idea">
+            <h3>{{idea.title}}</h3>
+            <h6>{{idea.created_at}} by {{idea.user.name}}</h6>
+            <h6>{{idea.idea_type}}</h6>
+            <h6>{{idea.coding_languages}}</h6>
+            <h6>{{idea.keywords}}</h6>
+            <h6>{{idea.offer_type}} {{#if idea.offer_value}}{{idea.offer_value}}{{/if}}</h6>
+            <div class="ideatext">
+                <span>
+                    {{idea.short_text}}
+                </span>
+            </div>
+            <div class="ideatext">
+                <span>
+                    {{idea.text}}
+                </span>
+            </div>
+            {{!-- <h6><button id="loveit">-> love it!</button>{{idea.upvote.number}} people loved this</h6> --}}
+            {{#if loggedIn}}
+            <h6 data-user="{{idea.user.id}}" id="user_id"><button id="contact">contact {{idea.user.name}} -></button></h6>
+
+            <section class="commentform start-hidden" id="message_user">
+                <div>
+                    <div>
+                        <textarea class="medtext" name="messagefield" id="messagefield"></textarea>
+                    </div>
+                    <div>
+                        <label for="messagesubmit">Submit your helpful message:</label>
+                    </div>
+                    <div class="submitbutton">
+                        <button id="messagesubmit">Submit -></button>
+                    </div>
+                </div>
+            </section>
+            {{/if}}
+
+            <div class="ideatext">--------</div>
+        </article>
+
+        <div>
+            <h5>Comments:</h5>
+        </div>
+        {{#each idea.comments as |comment|}}
+        <section class="comments">
+            <h6>On {{created_at}}, {{user.name}} wrote:</h6>
+            <div>
+                {{text}}
+            </div>
+            <div class="ideatext">---</div>
+        </section>
+        {{/each}}
+
+        {{#if loggedIn}}
+        <section class="commentform">
+            <div>
+                <h5>If you'd like to leave a comment, please be constructive. Suggest existing projects that the
+                    user might look at, suggest coding languages that they should include to attract the right
+                    people to help them, link to other people trying to get similar things made, etc.</h5>
+            </div>
+            <div>
+                <div>
+                    <label for="commentfield">Add a Comment:</label>
+                </div>
+                <div>
+                    <textarea class="medtext" name="commentfield" id="commentfield"></textarea>
+                </div>
+                <div>
+                    <label for="commentsubmit">Submit your helpful comment:</label>
+                </div>
+                <div class="submitbutton">
+                    <button id="commentsubmit">Submit -></button>
+                </div>
+            </div>
+        </section>
+        {{/if}}
+    </div>
+</div>
+
+<script src="/assets/js/idea.js"></script>
+<script src="/assets/js/sendMessage.js"></script>

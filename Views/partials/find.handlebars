@@ -1,0 +1,70 @@
+<nav class="findation">
+    <div class="findbox">
+        <label for="offer"><h3>Find by Offer:</h3></label>
+        <select id="offer" class="findselect">
+            {{!-- <option value="null">-></option> --}}
+            <option value="free">-> free</option>
+            <option value="paid">-> paid</option>
+            <option value="partner">-> negotiable</option>
+        </select>
+        {{!-- <label for="offerorder">Results Order:</label>
+        <select id="offerorder" class="findselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+            <option value="oldest">-> oldest</option>
+        </select> --}}
+        <span class="navbutton"><button class="findoffer">FIND -></button></span>
+    </div>
+    <div class="findbox">
+        <label for="category"><h3>Find by Category:</h3></label>
+        <select name="category" id="category" class="findselect">
+            {{!-- <option value="null">-></option> --}}
+            <option value="app">-> app</option>
+            <option value="game">-> game</option>
+            <option value="website">-> website</option>
+            <option value="program">-> program</option>
+            <option value="other">-> other</option>
+        </select>
+        {{!-- <label for="categoryorder">Results Order:</label>
+        <select id="categoryorder" class="findselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+            <option value="oldest">-> oldest</option>
+        </select> --}}
+        <span class="navbutton"><button class="findcategory">FIND -></button></span>
+    </div>
+    <div class="findbox">
+        <label for="languages"><h3>Find by Language:</h3></label>
+        <select id="languages" class="findselect">
+            {{!-- <option value="null">-></option> --}}
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JAVASCRIPT">JAVASCRIPT</option>
+            <option value="C#">C#</option>
+            <option value="C++">C++</option>
+            <option value="PHP">PHP</option>
+            <option value="RUBY">RUBY</option>
+            <option value="JAVA">JAVA</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="SHELL">SHELL</option>
+            <option value="SWIFT">SWIFT</option>
+            <option value="OBJECTIVEC">OBJECTIVE C</option>
+            <option value="SCALA">SCALA</option>
+            <option value="C">C</option>
+            <option value="TYPESCRIPT">TYPESCRIPT</option>
+        </select>
+        {{!-- <label for="languageorder">Results Order:</label>
+        <select id="languageorder" class="findselect">
+            <option value="null">-></option>
+            <option value="mostlikes">-> most likes</option>
+            <option value="mostrecent">-> most recent</option>
+            <option value="oldest">-> oldest</option>
+        </select> --}}
+        <span class="navbutton"><button class="findlanguage">FIND-></button></span>
+    </div>
+</nav>
+
+<script src="/assets/js/find.js"></script>
+<script src="/assets/js/forceReload.js"></script>

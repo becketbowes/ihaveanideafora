@@ -1,13 +1,14 @@
-const seedUser = require("./user");
-const seedIdea = require("./idea");
-const seedComment = require("./comment");
+const seedUsers = require("./user");
+const seedIdeas = require("./idea");
+const seedComments = require("./comment");
 
 const sequelize = require("../Controller/connection");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log("----------------");
-  await seedUser();
+
+  await seedUsers();
   console.log("----------------");
 
   await seedIdeas();
