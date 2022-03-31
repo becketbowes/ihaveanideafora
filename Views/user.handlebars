@@ -8,9 +8,6 @@
             <h3>Message from {{user.name}}:</h3>
             <h6 class="codertexttime">{{created_at}}</h6>
             <span class="codertext">{{text}}</span>
-            {{!-- <div class="intro">
-                <button id="reply">Reply -></button>
-            </div> --}}
         </div>
         <h6 data-user="{{user.id}}" id="user_id"><button id="contact">Respond to {{user.name}}</button></h6>
 
@@ -43,8 +40,37 @@
         {{#if user.ideas.length}}
         <h6>
             You have {{user.ideas.length}} previous ideas.
-            <a href="/find/{{user.id}}">see previous posts-></a>
+            <button id="previous">see previous posts-></button>
         </h6>
+
+        <section id="previous-ideas" style="display: none;">
+        {{#each user.ideas as |idea|}}
+        <a href="/idea/{{id}}">
+            <div class="contained">
+                <article class="idea">
+                    <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
+                    <h6>{{created_at}}</h6>
+                    <h6>
+                        {{#if idea_type}}{{idea_type}}, {{/if}}
+                        {{#if coding_languages}}{{coding_languages}}, {{/if}}
+                        {{#if keywords}}{{keywords}}, {{/if}}
+                        {{#if offer_type}}{{offer_type}}{{#if offer_value}}: {{offer_value}}{{/if}}{{/if}}
+                        </h6>
+                    <span>
+                        {{short_text}}
+                    </span>
+                    {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
+                    {{#if comments.length}}
+                    <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
+                    {{else}}
+                    <h6><a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">add comments -></a></h6>
+                    {{/if}}
+                    <span>-----</span>
+                </article>
+            </section>
+        </a>
+        {{/each}}
+        </div>
         {{/if}}
     </div>
 </div>
@@ -53,3 +79,4 @@
 {{#if user.conversations.length}}
 <script src="/assets/js/sendMessage.js"></script>
 {{/if}}
+<script src="/assets/js/seeIdeas.js"></script>

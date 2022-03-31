@@ -44,7 +44,7 @@ router.get('/idea/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'offer_value', 'userkey', 'created_at'],
         include: [
             {
                 model: User,
@@ -119,7 +119,15 @@ router.get('/user', withAuth, (req,res) => {
             },
             {
                 model: Idea,
-                attributes: ['id', 'title', 'short_text']
+                attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+                include: {
+                    model: Comment,
+                    attributes: ['text', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['name']
+                    }
+                }
             }
         ]
     })

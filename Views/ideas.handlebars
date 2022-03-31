@@ -4,7 +4,7 @@
         <div class="contained">
         <article class="idea">
             <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
-            <h6>{{created_at}}</h6>
+            <h6>{{created_at}} by {{user.name}}</h6>
             <h6>
                 {{#if idea_type}}{{idea_type}}, {{/if}}
                 {{#if coding_languages}}{{coding_languages}}, {{/if}}

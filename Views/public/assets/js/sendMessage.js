@@ -23,4 +23,17 @@ async function sendMessageHandler() {
     }
 }
 
-document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+function openTextarea() {
+
+    const div = document.querySelector('#message_user');
+    if (div.style.display = "none") {
+        div.style.display = "block"
+        document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+    } else {
+        div.style.display = "none";
+    }
+}
+
+// document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+
+document.querySelector('#contact').addEventListener("click", openTextarea);

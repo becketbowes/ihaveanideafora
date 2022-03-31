@@ -91,6 +91,7 @@ button, a {
     margin-top: 30px;
     padding: none;
     font-weight: 500;
+    cursor: pointer;
 }
 
 select {

@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // POST to Create User  
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     // Expects { username: , email: , password: }
     // (add) POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
