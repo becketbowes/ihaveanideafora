@@ -3,6 +3,18 @@ const sequelize = require('../Controller/connection');
 
 class Conversation extends Model {}
 
+// let's make Conversation and Message two different Models.
+// Message is like Comment with convokey instead of ideakey
+// Conversation hasMany Message
+// Message belongsTo Conversation
+// User hasMany Message
+// Message belongs to User
+// get Conversation by ID renders convo handlebars
+// Includes all messages
+// Message has senderkey that might match req.session.userkey
+// If matches, then they get corresponding class
+// to view Conversation, req.session.userkey must match either inventorkey or coderkey
+
 Conversation.init(
     {
         id: {
@@ -11,27 +23,32 @@ Conversation.init(
             primaryKey: true,
             autoIncrement: true
         },
-        coderText: {
+        text: {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        inventorText: {
-            type: DataTypes.TEXT,
-            allowNull: true
-        },
-        coderKey: {
+        // inventorText: {
+        //     type: DataTypes.TEXT,
+        //     allowNull: true
+        // },
+        senderKey: {
             type: DataTypes.INTEGER,
             references: { 
-                model: 'User', 
+                model: 'user', 
                 key: 'id' 
             }
         },
-        inventorKey: {
+        receiverKey: {
             type: DataTypes.INTEGER,
             references: { 
-                model: 'User', 
+                model: 'user', 
                 key: 'id' 
             }
+        },
+        read: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
         }
     },
     {

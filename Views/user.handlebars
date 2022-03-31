@@ -1,13 +1,13 @@
 <div class="pagebody">
     <div class="pagecontent">
-        <a href="/logout">Logout -></a>
-        {{#if newmessages.length}}
-        <div class="intro">You have New Messages!</div>
-        {{#each newmessage}}
+        <button id="logout">Logout -></button>
+        {{#if conversation.length}}
+        <div class="intro">You have New Messages, {{user.name}}!</div>
+        {{#each user.conversations as |conversation|}}
         <div>
-            <h3>Message from {{user}}:</h3>
-            <h6>{{createdAt}}</h6>
-            <span>{{text}}</span>
+            <h3>Message from {{user.name}}:</h3>
+            <h6 class="codertexttime">{{created_at}}</h6>
+            <span class="codertext">{{text}}</span>
             <div class="intro">
                 <button id="reply">Reply -></button>
             </div>
@@ -15,30 +15,24 @@
         {{/each}}
         {{/if}}
 
-        {{#if oldmessages.length}}
-        <div class="intro">You have New Messages!</div>
-        {{#each newmessage}}
-        <div>
-            <h3>Message from {{user}}:</h3>
-            <h6>{{createdAt}}</h6>
-            <span>{{text}}</span>
-            <div class="intro">
-                <button id="reply">Reply -></button>
-            </div>
-        </div>
-        {{/each}}
-        {{/if}}
+        <h3>About {{user.name}}:</h3>
 
-        <h3>About {{user}}:</h3>
         {{#if user.image}}
-        {{user.image}}
+            <img width="100px" src="{{user.image}}" />
         {{/if}}
         {{#if user.aboutme}}
-        {{user.aboutme}}
+            <h5>{{user.aboutme}}</h5>
         {{/if}}
         <a href="userprofile">Update User profile</a>
-        {{#if posts.length}}
-        You have {{posts.length}} previous ideas.
-        <a href="/find/{{user.id}}">see previous posts-></a>
+
+        {{#if user.ideas.length}}
+        <h6>
+            You have {{user.ideas.length}} previous ideas.
+            <a href="/find/{{user.id}}">see previous posts-></a>
+        </h6>
+        {{/if}}
     </div>
 </div>
+
+<script src="/assets/js/logout.js"></script>
+{{!-- <script src="/assets/js/receiveMessage.js"></script> --}}

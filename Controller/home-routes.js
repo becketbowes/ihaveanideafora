@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
-const { Idea, User, Comment, Upvote } = require('../Model');
+const { Idea, User, Comment, Upvote, Conversation } = require('../Model');
 
 router.get('/', (req,res) => {
     Idea.findAll({
@@ -12,6 +12,10 @@ router.get('/', (req,res) => {
             },
             {
                 model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
                 // attributes: ['id']
                 // to identify # of Comments per post?
             }
@@ -40,7 +44,12 @@ router.get('/idea/:id', (req, res) => {
             id: req.params.id
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
-        include: {
+        include: [
+            {
+                model: User,
+                attributes: ['name', 'id']
+            },
+            {
             model: Comment,
             attributes: ['text', 'created_at'],
             include: {
@@ -48,6 +57,7 @@ router.get('/idea/:id', (req, res) => {
                 attributes: ['name']
             }
         }
+    ]
     })
         .then(dbIdeaData => {
             if (!dbIdeaData) {
@@ -71,27 +81,83 @@ router.get('/login', (req,res) => {
 })
 
 router.get('/polite', (req,res) => {
-    res.render('polite', { lightpage: false, username: req.session.username })
+    res.render('polite', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/politetest', (req,res) => {
-    res.render('politetest', { lightpage: false, username: req.session.username })
+    res.render('politetest', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/faq', (req,res) => {
-    res.render('faq', { lightpage: true, username: req.session.username })
+    res.render('faq', { lightpage: true, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/compose', (req,res) => {
-    res.render('compose', { lightpage: false, username: req.session.username })
+    res.render('compose', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
 router.get('/find', (req,res) => { 
-    res.render('ideas', { lightpage: false, username: req.session.username, findidea: true })
+    res.render('ideas', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username, findidea: true })
 })
 
 router.get('/user', (req,res) => { 
-    res.render('ideas', { lightpage: false, username: req.session.username })
-})
+    User.findOne({
+        where: {
+            id: req.session.userkey
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // keys: 'receiverKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'short_text']
+            }
+        ]
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        
+    
+        res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
+router.get('/user/:id', (req,res) => { 
+    User.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // keys: 'receiverKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'short_text']
+            }
+        ]
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        // const newmessages = 
+        res.json(dbUserData);
+        // res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
 
 module.exports = router;

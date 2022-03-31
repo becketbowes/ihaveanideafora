@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,14 +21,15 @@
         <a href="/" style="text-decoration: none;"><h1>ideafora</h1></a>
     </header>
     <nav class="navigate">
-               <a href="/">-------home ->------</a>
+            <a href="/">-------home ->------</a>
             <a href="/faq">-------faqs ->------</a>
-        <a href="/compose">---post an idea ->--</a>
-           <a href="/find">---find an idea ->--</a>
+            <a href="/polite">---post an idea ->--</a>
+            <a href="/find">---find an idea ->--</a>
             {{#if loggedIn}}
-           <a href="/user">----{{username}}->--</a>
+            {{!-- <a href="/user">----{{username}}->--</a> --}}
+            <a href="/user">-------user ->------</a>
             {{else}}
-          <a href="/login">------login ->------</a>
+            <a href="/login">------login ->------</a>
             {{/if}}
     </nav>
     {{/unless}}
@@ -40,11 +42,6 @@
     <footer>
         rights group3productions {{date}}
     </footer>
-
-
-    
 </body>
-    {{#if loggedIn}}
-    <script src="/assets/js/logout.js"></script>
-    {{/if}}
 </html>
+

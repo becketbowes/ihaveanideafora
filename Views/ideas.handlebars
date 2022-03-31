@@ -9,16 +9,18 @@
             <span>
                 {{short_text}}
             </span>
-            <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6>
-            <h6>{{comment.user.name}} commented: {{comment.text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
+            {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
+            {{#if comments.length}}
+            <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
+            {{else}}
+            <h6><a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">add comments -></a></h6>
+            {{/if}}
             <span>-----</span>
         </article>
     </div>
     </a>
     {{/each}}
 </div>
-
-{{!-- navigation script and ideas script --}}
 
 <script src="/assets/js/ideas.js"></script>
 
