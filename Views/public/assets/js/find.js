@@ -1,8 +1,11 @@
 const popularOrder = ['upvoted_ideas', 'DESC']
 const recentOrder = ['created_at', 'DESC']
+const oldestOrder = ['created_at', 'DESC']
 const orderSyntaxer = function(order) {
     if (order === 'mostlikes') {
         order = popularOrder
+    } else if (order === 'oldest') {
+        order = oldestOrder
     } else if (order === 'mostrecent') {
         order = recentOrder
     } else {
@@ -11,17 +14,19 @@ const orderSyntaxer = function(order) {
 };
 
 async function findOffers() {
-    const offertype = document.querySelector('#offer').value;
-    const offerOrder = orderSyntaxer(document.querySelector('#offerorder').value);
+    const offer = document.querySelector('#offer').value;
+    const offerString = `/find/offer/${offer}`;
+    // const order = orderSyntaxer(document.querySelector('#offerorder').value);
 
-    if (offertype) {
-        const res = await fetch('/find/offer', {
+    if (offer) {
+        const res = await fetch(offerString, {
             method: 'GET',
-            body: JSON.stringify({ offer: offertype, order: offerOrder}),
+            // params: JSON.stringify({ offer: offer, order: order}),
+            // params: JSON.stringify({ offer: offer }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
-            console.log('public/find.js24 reporting for duty maam');     
+            document.location.assign(offerString);     
         } else {
             alert(res.statusText);
         }
@@ -35,7 +40,7 @@ async function findCategories() {
     if (categorytype) {
         const res = await fetch('/find/category', {
             method: 'GET',
-            body: JSON.stringify({ category: categorytype, order: categoryOrder}),
+            params: JSON.stringify({ category: categorytype, order: categoryOrder}),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
@@ -53,7 +58,7 @@ async function findLanguages() {
     if (languagetype) {
         const res = await fetch('/find/language', {
             method: 'GET',
-            body: JSON.stringify({ language: languagetype, order: languageOrder}),
+            params: JSON.stringify({ language: languagetype, order: languageOrder}),
             headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
@@ -67,3 +72,10 @@ async function findLanguages() {
 document.querySelector('.findoffer').addEventListener("click", findOffers);
 document.querySelector('.findcategory').addEventListener("click", findCategories);
 document.querySelector('.findlanguage').addEventListener("click", findLanguages);
+
+document.querySelector('#languages').selectedIndex = -1;
+document.querySelector('#languageorder').selectedIndex = -1;
+document.querySelector('#offer').selectedIndex = -1;
+document.querySelector('#offerorder').selectedIndex = -1;
+document.querySelector('#category').selectedIndex = -1;
+document.querySelector('#categoryorder').selectedIndex = -1;

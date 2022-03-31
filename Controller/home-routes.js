@@ -109,11 +109,11 @@ router.get('/user', (req,res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'text', 'coderkey', 'inventorkey', 'read', 'created_at'],
+                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
-                    keys: 'coderKey'
+                    keys: 'receiverKey'
                 }
             },
             {

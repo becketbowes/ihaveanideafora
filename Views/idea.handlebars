@@ -18,7 +18,24 @@
                 </span>
             </div>
             {{!-- <h6><button id="loveit">-> love it!</button>{{idea.upvote.number}} people loved this</h6> --}}
-            <h6><button id="contact">contact {{idea.user.name}}</button></h6>
+            {{#if loggedIn}}
+            <h6 data-user="{{user.id}}" id="user_id"><button id="contact">contact {{idea.user.name}}</button></h6>
+
+            <section class="commentform">
+                <div>
+                    <div>
+                        <textarea class="medtext" name="messagefield" id="messagefield"></textarea>
+                    </div>
+                    <div>
+                        <label for="messagesubmit">Submit your helpful message:</label>
+                    </div>
+                    <div class="submitbutton">
+                        <button id="messagesubmit">Submit -></button>
+                    </div>
+                </div>
+            </section>
+            {{/if}}
+
             <div class="ideatext">--------</div>
         </article>
 
@@ -35,6 +52,7 @@
         </section>
         {{/each}}
 
+        {{#if loggedIn}}
         <section class="commentform">
             <div>
                 <h5>If you'd like to leave a comment, please be constructive. Suggest existing projects that the
@@ -46,7 +64,7 @@
                     <label for="commentfield">Add a Comment:</label>
                 </div>
                 <div>
-                    <textarea name="commentfield" id="commentfield"></textarea>
+                    <textarea class="medtext" name="commentfield" id="commentfield"></textarea>
                 </div>
                 <div>
                     <label for="commentsubmit">Submit your helpful comment:</label>
@@ -56,6 +74,7 @@
                 </div>
             </div>
         </section>
+        {{/if}}
     </div>
 </div>
 

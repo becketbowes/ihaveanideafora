@@ -31,14 +31,14 @@ Conversation.init(
         //     type: DataTypes.TEXT,
         //     allowNull: true
         // },
-        coderkey: {
+        senderKey: {
             type: DataTypes.INTEGER,
             references: { 
                 model: 'user', 
                 key: 'id' 
             }
         },
-        inventorkey: {
+        receiverKey: {
             type: DataTypes.INTEGER,
             references: { 
                 model: 'user', 
@@ -47,7 +47,8 @@ Conversation.init(
         },
         read: {
             type: DataTypes.BOOLEAN,
-            allowNull: true
+            allowNull: true,
+            defaultValue: false
         }
     },
     {
