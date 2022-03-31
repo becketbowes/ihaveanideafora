@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // const sequelize = require('../connection');
 const { Conversation, User } = require('../../Model');
+const withAuth = require('../../utils/withAuth');
 
 //get all Conversations
 
@@ -15,12 +16,14 @@ Conversation.findAll()
 
 //post new Conversation
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Conversation.create ({
         text: req.body.text,
-        senderKey: req.session.userkey,
+        sender_key: req.session.userkey,
+        userkey: req.session.userkey,
         // senderKey: req.body.senderKey,
-        receiverKey: req.body.receiverKey
+        receiver_key: req.body.receiver_key,
+        talksWithId: req.body.talksWithId
     })
     .then(dbConversationData => res.json(dbConversationData))
     .catch(err => {
@@ -31,7 +34,7 @@ router.post('/', (req, res) => {
 
 //update Conversation
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Conversation.update (
         {
             text: req.body.text
@@ -50,7 +53,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete Conversation
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
 Conversation.destroy({
     where: {
     id: req.params.id

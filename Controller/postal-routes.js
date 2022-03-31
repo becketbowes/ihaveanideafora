@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
     Conversation.findAll({
         where: {
             // id: req.params.id,
-            receiverKey: req.session.userkey
+            receiver_key: req.session.userkey
             // receiverKey: req.params.id
         },
-        attributes: ['id', 'text', 'receiverKey', 'senderKey', 'created_at'],
+        attributes: ['id', 'text', 'receiver_key', 'sender_key', 'created_at'],
         include: [
             {
                 model: User,
@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
                 //     id: req.params.id
                 // },
                 attributes: ['name'],
-                // foreignKey: 'senderKey'
+                // foreignKey: 'sender_key'
             },
         //     {
         //         model: User,
         //         where: {
-        //             id: 'senderKey'
+        //             id: 'sender_key'
         //         },
         //         attributes: ['name']
         //     }

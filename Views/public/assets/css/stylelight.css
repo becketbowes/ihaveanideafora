@@ -94,6 +94,14 @@ textarea {
     padding-right: 10%;
 }
 
+.no-style {
+    text-decoration: none;
+}
+
+.start-hidden {
+    display: none;
+}
+
 .contained {
     margin-top: 50px;
 }

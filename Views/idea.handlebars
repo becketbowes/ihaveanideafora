@@ -2,11 +2,11 @@
     <div class="contained">
         <article class="idea">
             <h3>{{idea.title}}</h3>
-            <h6>{{idea.created_at}}</h6>
+            <h6>{{idea.created_at}} by {{idea.user.name}}</h6>
             <h6>{{idea.idea_type}}</h6>
-            <h6>{{idea.offer_type}}</h6>
             <h6>{{idea.coding_languages}}</h6>
             <h6>{{idea.keywords}}</h6>
+            <h6>{{idea.offer_type}} {{#if idea.offer_value}}{{idea.offer_value}}{{/if}}</h6>
             <div class="ideatext">
                 <span>
                     {{idea.short_text}}
@@ -19,9 +19,9 @@
             </div>
             {{!-- <h6><button id="loveit">-> love it!</button>{{idea.upvote.number}} people loved this</h6> --}}
             {{#if loggedIn}}
-            <h6 data-user="{{idea.user.id}}" id="user_id"><button id="contact">contact {{idea.user.name}}</button></h6>
+            <h6 data-user="{{idea.user.id}}" id="user_id"><button id="contact">contact {{idea.user.name}} -></button></h6>
 
-            <section class="commentform">
+            <section class="commentform start-hidden" id="message_user">
                 <div>
                     <div>
                         <textarea class="medtext" name="messagefield" id="messagefield"></textarea>

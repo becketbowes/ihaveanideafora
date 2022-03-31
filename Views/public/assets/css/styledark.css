@@ -43,6 +43,18 @@ h6 {
     margin: 10px;
 }
 
+.no-style {
+    text-decoration: none;
+}
+
+.start-hidden {
+    display: none;
+}
+
+.align-right {
+    text-align: right;
+}
+
 .contain {
     /* width: 100%; */
     display: flex;
@@ -91,6 +103,7 @@ button, a {
     margin-top: 30px;
     padding: none;
     font-weight: 500;
+    cursor: pointer;
 }
 
 select {
@@ -171,6 +184,11 @@ textarea {
 
 .bigtext {
     height: 300px;
+}
+
+#logout {
+    text-align: right;
+    padding-bottom: 20px;
 }
 
 footer {

@@ -2,19 +2,19 @@ async function sendMessageHandler() {
 
     const text = document.querySelector('#messagefield').value.trim();
     const receiver = document.querySelector('#user_id');
-    const receiverKey = receiver.dataset.user;
+    const receiver_key = receiver.dataset.user;
 
     
 
     if (text) {
         const response = await fetch('/api/conversations', {
             method: 'post',
-            body: JSON.stringify({ text, receiverKey }),
+            body: JSON.stringify({ text, receiver_key }),
             headers: { 'Content-Type': 'application/json'}
         });
 
         if (response.ok) {
-            console.log(receiverKey + ": " + text);
+            console.log(receiver_key + ": " + text);
             document.location.reload();
             // send feedback of message sent
         } else {
@@ -23,4 +23,17 @@ async function sendMessageHandler() {
     }
 }
 
-document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+function openTextarea() {
+
+    const div = document.querySelector('#message_user');
+    if (div.style.display = "none") {
+        div.style.display = "block"
+        document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+    } else {
+        div.style.display = "none";
+    }
+}
+
+// document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
+
+document.querySelector('#contact').addEventListener("click", openTextarea);

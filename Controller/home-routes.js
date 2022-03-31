@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
 const { Idea, User, Comment, Upvote, Conversation } = require('../Model');
+const withAuth = require('../utils/withAuth');
 
 router.get('/', (req,res) => {
     Idea.findAll({
-        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'offer_value', 'userkey', 'created_at'],
         include: [
             {
                 model: User,
@@ -43,7 +44,7 @@ router.get('/idea/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'offer_value', 'userkey', 'created_at'],
         include: [
             {
                 model: User,
@@ -80,11 +81,11 @@ router.get('/login', (req,res) => {
     res.render('login', { noNav: true, lightpage: true, loggedIn: req.session.loggedIn })
 })
 
-router.get('/polite', (req,res) => {
+router.get('/polite', withAuth,  (req,res) => {
     res.render('polite', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
-router.get('/politetest', (req,res) => {
+router.get('/politetest', withAuth, (req,res) => {
     res.render('politetest', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
@@ -92,7 +93,7 @@ router.get('/faq', (req,res) => {
     res.render('faq', { lightpage: true, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
-router.get('/compose', (req,res) => {
+router.get('/compose', withAuth, (req,res) => {
     res.render('compose', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
@@ -100,7 +101,7 @@ router.get('/find', (req,res) => {
     res.render('ideas', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username, findidea: true })
 })
 
-router.get('/user', (req,res) => { 
+router.get('/user', withAuth, (req,res) => { 
     User.findOne({
         where: {
             id: req.session.userkey
@@ -109,7 +110,7 @@ router.get('/user', (req,res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
@@ -118,7 +119,15 @@ router.get('/user', (req,res) => {
             },
             {
                 model: Idea,
-                attributes: ['id', 'title', 'short_text']
+                attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+                include: {
+                    model: Comment,
+                    attributes: ['text', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['name']
+                    }
+                }
             }
         ]
     })
@@ -136,15 +145,16 @@ router.get('/user/:id', (req,res) => {
             id: req.params.id
         },
         attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        // [sequelize.literal('(SELECT * FROM conversation WHERE conversation.receiver_key = user.id)'), 'test']
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['id', 'name'],
-                    // keys: 'receiverKey'
-                }
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
+                // include: {
+                //     model: User,
+                //     attributes: ['id', 'name'],
+                //     // keys: 'receiver_key'
+                // }
             },
             {
                 model: Idea,

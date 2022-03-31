@@ -31,14 +31,14 @@ Conversation.init(
         //     type: DataTypes.TEXT,
         //     allowNull: true
         // },
-        senderKey: {
+        sender_key: {
             type: DataTypes.INTEGER,
             references: { 
                 model: 'user', 
                 key: 'id' 
             }
         },
-        receiverKey: {
+        receiver_key: {
             type: DataTypes.INTEGER,
             references: { 
                 model: 'user', 
