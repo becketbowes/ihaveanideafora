@@ -1,7 +1,7 @@
 <div class="pagebody">
     <div class="pagecontent">
         <button id="logout">Logout -></button>
-        {{!-- {{#if conversation.length}} --}}
+        {{#if conversation.length}}
         <div class="intro">You have New Messages, {{user.name}}!</div>
         {{#each user.conversations as |conversation|}}
         <div>
@@ -13,7 +13,7 @@
             </div>
         </div>
         {{/each}}
-        {{!-- {{/if}} --}}
+        {{/if}}
 
         <h3>About {{user.name}}:</h3>
 
@@ -35,4 +35,4 @@
 </div>
 
 <script src="/assets/js/logout.js"></script>
-<script src="/assets/js/receiveMessage.js"></script>
+{{!-- <script src="/assets/js/receiveMessage.js"></script> --}}

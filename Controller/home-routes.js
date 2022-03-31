@@ -113,7 +113,7 @@ router.get('/user', (req,res) => {
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
-                    keys: 'receiverKey'
+                    // keys: 'receiverKey'
                 }
             },
             {
@@ -123,15 +123,40 @@ router.get('/user', (req,res) => {
         ]
     })
     .then(dbUserData => {
-    //     // if (!dbIdeaData) {
-    //     //     res.status(404).json({ message: 'No user found with this information' });
-    //     //     return;
-    //     // }
-
         const user = dbUserData.get({ plain: true });
-        const newmessages = 
+        
     
         res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
+router.get('/user/:id', (req,res) => { 
+    User.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // keys: 'receiverKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'short_text']
+            }
+        ]
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        // const newmessages = 
+        res.json(dbUserData);
+        // res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });
 });
 

@@ -10,7 +10,7 @@ User.hasMany(Conversation, { foreignKey: 'userkey', onDelete: 'SET NULL' });
 User.hasMany(Comment, { foreignKey: 'userkey', onDelete: 'SET NULL' });
 User.hasMany(Upvote, { foreignKey: 'userkey', onDelete: 'SET NULL' });
 User.belongsToMany(User, {through: Conversation, as: 'talks_with', foreignKey: 'receiverKey', onDelete: 'SET NULL'});
-User.hasMany(Conversation, { foriegnKey: 'userkey', onDelete: 'SET NULL'});
+User.hasMany(Conversation, { foreignKey: 'userkey', onDelete: 'SET NULL'});
 Idea.belongsTo(User, { foreignKey: 'userkey', onDelete: 'SET NULL' });
 Idea.belongsToMany(User, { through: Upvote, as: 'upvoted_ideas', foreignKey: 'ideakey', onDelete: 'SET NULL' });
 Idea.hasMany(Comment, { foreignKey: 'ideakey', onDelete: 'SET NULL' });

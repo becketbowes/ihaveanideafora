@@ -4,12 +4,12 @@ const { Idea, User, Comment, Conversation, Upvote } = require('../Model');
 
 //get Conversation by user
 
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
     Conversation.findAll({
         where: {
             // id: req.params.id,
-            // receiverKey: req.session.userkey
-            receiverKey: req.params.id
+            receiverKey: req.session.userkey
+            // receiverKey: req.params.id
         },
         attributes: ['id', 'text', 'receiverKey', 'senderKey', 'created_at'],
         include: [
@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
                 //     id: req.params.id
                 // },
                 attributes: ['name'],
-                foreignKey: 'senderKey'
+                // foreignKey: 'senderKey'
             },
         //     {
         //         model: User,
