@@ -43,6 +43,18 @@ h6 {
     margin: 10px;
 }
 
+.no-style {
+    text-decoration: none;
+}
+
+.start-hidden {
+    display: none;
+}
+
+.align-right {
+    text-align: right;
+}
+
 .contain {
     /* width: 100%; */
     display: flex;

@@ -43,12 +43,12 @@
             <button id="previous">see previous posts-></button>
         </h6>
 
-        <section id="previous-ideas" style="display: none;">
+        <section id="previous-ideas" class="start-hidden">
         {{#each user.ideas as |idea|}}
         <a href="/idea/{{id}}">
             <div class="contained">
                 <article class="idea">
-                    <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
+                    <a id="idea-{{id}}" href="/idea/{{id}}" class="start-hidden"><h3>{{title}}</h3></a>
                     <h6>{{created_at}}</h6>
                     <h6>
                         {{#if idea_type}}{{idea_type}}, {{/if}}
@@ -61,9 +61,9 @@
                     </span>
                     {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
                     {{#if comments.length}}
-                    <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">see more comments -></a></h6>
+                    <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments no-style" href="/idea/{{id}}">see more comments -></a></h6>
                     {{else}}
-                    <h6><a id="comment-{{id}}" class="to-comments" href="/idea/{{id}}" style="text-decoration: none">add comments -></a></h6>
+                    <h6><a id="comment-{{id}}" class="to-comments start-hidden" href="/idea/{{id}}">add comments -></a></h6>
                     {{/if}}
                     <span>-----</span>
                 </article>
