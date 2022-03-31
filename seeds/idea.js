@@ -22,6 +22,7 @@ const ideadata = [
     offer_type:"paid",
     offer_value: "50,000$ - 75,000$",
     text:"",
+
     userkey: 2,
   },
   {
