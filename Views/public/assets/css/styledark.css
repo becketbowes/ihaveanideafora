@@ -173,6 +173,11 @@ textarea {
     height: 300px;
 }
 
+#logout {
+    text-align: right;
+    padding-bottom: 20px;
+}
+
 footer {
     margin-top: 130px;
     text-align: right;

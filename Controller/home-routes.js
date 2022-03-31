@@ -109,7 +109,7 @@ router.get('/user', (req,res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
@@ -136,15 +136,16 @@ router.get('/user/:id', (req,res) => {
             id: req.params.id
         },
         attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        // [sequelize.literal('(SELECT * FROM conversation WHERE conversation.receiver_key = user.id)'), 'test']
         include: [
             {
                 model: Conversation,
-                attributes: ['id', 'text', 'receiverKey', 'senderKey', 'read', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['id', 'name'],
-                    // keys: 'receiverKey'
-                }
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
+                // include: {
+                //     model: User,
+                //     attributes: ['id', 'name'],
+                //     // keys: 'receiver_key'
+                // }
             },
             {
                 model: Idea,

@@ -2,19 +2,20 @@ async function sendMessageHandler() {
 
     const text = document.querySelector('#messagefield').value.trim();
     const receiver = document.querySelector('#user_id');
-    const receiverKey = receiver.dataset.user;
+    const receiver_key = receiver.dataset.user;
+    const talksWithId = receiver.dataset.user;
 
     
 
     if (text) {
         const response = await fetch('/api/conversations', {
             method: 'post',
-            body: JSON.stringify({ text, receiverKey }),
+            body: JSON.stringify({ text, receiver_key, talksWithId }),
             headers: { 'Content-Type': 'application/json'}
         });
 
         if (response.ok) {
-            console.log(receiverKey + ": " + text);
+            console.log(receiver_key + ": " + text);
             document.location.reload();
             // send feedback of message sent
         } else {

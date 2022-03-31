@@ -18,9 +18,11 @@ Conversation.findAll()
 router.post('/', (req, res) => {
     Conversation.create ({
         text: req.body.text,
-        senderKey: req.session.userkey,
+        sender_key: req.session.userkey,
+        userkey: req.session.userkey,
         // senderKey: req.body.senderKey,
-        receiverKey: req.body.receiverKey
+        receiver_key: req.body.receiver_key,
+        talksWithId: req.body.talksWithId
     })
     .then(dbConversationData => res.json(dbConversationData))
     .catch(err => {
