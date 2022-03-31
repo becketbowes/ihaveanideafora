@@ -37,7 +37,7 @@ router.get('/offer/:offer', (req,res) => {
 
 router.get('/category/:category', (req,res) => {
     Idea.findAll({
-        where: { offer_type: req.params.category },
+        where: { idea_type: req.params.category },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
         include: [
             {
@@ -70,7 +70,7 @@ router.get('/category/:category', (req,res) => {
 
 router.get('/language/:language', (req,res) => {
     Idea.findAll({
-        where: { offer_type: req.params.language },
+        where: { coding_languages: req.params.language },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
         include: [
             {

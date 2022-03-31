@@ -47,7 +47,7 @@ router.get('/idea/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['name']
+                attributes: ['name', 'id']
             },
             {
             model: Comment,
@@ -129,6 +129,7 @@ router.get('/user', (req,res) => {
     //     // }
 
         const user = dbUserData.get({ plain: true });
+        const newmessages = 
     
         res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });

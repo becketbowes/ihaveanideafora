@@ -1,34 +1,19 @@
 <div class="pagebody">
     <div class="pagecontent">
         <button id="logout">Logout -></button>
-        {{#if newmessages.length}}
+        {{!-- {{#if conversation.length}} --}}
         <div class="intro">You have New Messages, {{user.name}}!</div>
-        {{#each newmessage}}
+        {{#each user.conversations as |conversation|}}
         <div>
-            <h3>Message from {{user.conversation.user.name}}:</h3>
-            <h6 class="codertexttime">{{user.conversation.created_at}}</h6>
-            <span class="codertext">{{user.conversation.coderText}}</span>
+            <h3>Message from {{user.name}}:</h3>
+            <h6 class="codertexttime">{{created_at}}</h6>
+            <span class="codertext">{{text}}</span>
             <div class="intro">
                 <button id="reply">Reply -></button>
             </div>
         </div>
         {{/each}}
-        {{/if}}
-
-        {{#if oldmessages.length}}
-            <div class="intro">You have New Messages!</div>
-            {{#each oldmessage}}
-            <div>
-                <h3>Message from {{user.conversation.user.name}}:</h3>
-                <h6 class="inventortexttime">{{user.conversation.created_at}}</h6>
-                <span class="inventortext">{{user.conversation.coderText}}</span>
-                {{!-- <span class="">{{user.conversation.inventorText}}</span> --}}
-                <div class="intro">
-                    <button id="reply">Reply -></button>
-                </div>
-            </div>
-            {{/each}}
-        {{/if}}
+        {{!-- {{/if}} --}}
 
         <h3>About {{user.name}}:</h3>
 
@@ -50,3 +35,4 @@
 </div>
 
 <script src="/assets/js/logout.js"></script>
+<script src="/assets/js/receiveMessage.js"></script>

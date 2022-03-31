@@ -13,54 +13,14 @@ Conversation.findAll()
     });
 });
 
-//get Conversation by id
-
-router.get('/:id', (req, res) => {
-    Conversation.findOne({
-        where: {
-            id: req.params.id,
-            coderkey: req.session.userkey
-        },
-        attributes: [
-            'id', 
-            'text', 
-            'coderkey', 
-            'inventorkey', 
-            'created_at',
-            // [sequelize.literal('(SELECT * FROM user WHERE user.id = conversation.inventorkey)'), 'other_user']
-        ],
-        include: [
-            {
-                model: User,
-                where: {
-                    id: req.session.userkey
-                },
-                attributes: ['name']
-            },
-            {
-                model: User,
-                where: {
-                    id: req.body.inventorkey
-                },
-                attributes: ['name']
-            }
-        ]
-    })
-        .then(dbConversationData => res.json(dbConversationData))
-        .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-        });
-    });
-    
-
 //post new Conversation
 
 router.post('/', (req, res) => {
     Conversation.create ({
         text: req.body.text,
-        coderkey: req.session.userkey,
-        inventorkey: req.body.userkey
+        senderKey: req.session.userkey,
+        // senderKey: req.body.senderKey,
+        receiverKey: req.body.receiverKey
     })
     .then(dbConversationData => res.json(dbConversationData))
     .catch(err => {
