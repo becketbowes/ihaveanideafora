@@ -7,20 +7,20 @@ async function postIdeaHandler(event) {
 
     const title = document.querySelector('#title').value.trim();
     const coding_languages = document.querySelector('#coding-languages').value;
-    const offer_class = document.querySelector('#offer-type').value;
+    const offer_type = document.querySelector('#offer-type').value;
     const offer_value = document.querySelector('#offer-value').value;
-    const offer_type = offer_class + ": " + offer_value;    
+    // const offer_type = offer_class + ": " + offer_value;    
     const idea_type = document.querySelector('#idea-type').value;
     const keywords_string = document.querySelector('#keywords').value.trim();
     const keywords = keywords_string;
     const short_text = document.querySelector('#short-text').value.trim();
     const text = document.querySelector('#text').value.trim();
 
-    if (title && short_text) {
+    if (title && short_text && idea_type && offer_type) {
         const response = await fetch('/api/ideas', {
             method: 'post',
             body: JSON.stringify({
-                title, coding_languages, offer_type, idea_type, keywords, short_text, text
+                title, coding_languages, offer_type, offer_value, idea_type, keywords, short_text, text
             }),
             headers: { 'Content-Type': 'application/json'}
         });

@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
 const { Idea, User, Comment, Upvote, Conversation } = require('../Model');
+const withAuth = require('../utils/withAuth');
 
 router.get('/', (req,res) => {
     Idea.findAll({
-        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+        attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'offer_value', 'userkey', 'created_at'],
         include: [
             {
                 model: User,
@@ -80,11 +81,11 @@ router.get('/login', (req,res) => {
     res.render('login', { noNav: true, lightpage: true, loggedIn: req.session.loggedIn })
 })
 
-router.get('/polite', (req,res) => {
+router.get('/polite', withAuth,  (req,res) => {
     res.render('polite', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
-router.get('/politetest', (req,res) => {
+router.get('/politetest', withAuth, (req,res) => {
     res.render('politetest', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
@@ -92,7 +93,7 @@ router.get('/faq', (req,res) => {
     res.render('faq', { lightpage: true, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
-router.get('/compose', (req,res) => {
+router.get('/compose', withAuth, (req,res) => {
     res.render('compose', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
 })
 
@@ -100,7 +101,7 @@ router.get('/find', (req,res) => {
     res.render('ideas', { lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username, findidea: true })
 })
 
-router.get('/user', (req,res) => { 
+router.get('/user', withAuth, (req,res) => { 
     User.findOne({
         where: {
             id: req.session.userkey

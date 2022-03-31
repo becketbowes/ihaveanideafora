@@ -5,7 +5,12 @@
         <article class="idea">
             <a id="idea-{{id}}" href="/idea/{{id}}" style="text-decoration: none"><h3>{{title}}</h3></a>
             <h6>{{created_at}}</h6>
-            <h6>{{idea_type}}, {{offer_type}}, {{coding_languages}}, {{keywords}}</h6>
+            <h6>
+                {{#if idea_type}}{{idea_type}}, {{/if}}
+                {{#if coding_languages}}{{coding_languages}}, {{/if}}
+                {{#if keywords}}{{keywords}}, {{/if}}
+                {{#if offer_type}}{{offer_type}}{{#if offer_value}}: {{offer_value}}{{/if}}{{/if}}
+                </h6>
             <span>
                 {{short_text}}
             </span>

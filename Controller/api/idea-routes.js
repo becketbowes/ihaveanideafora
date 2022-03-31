@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Idea, Comment, User } = require('../../Model');
+const withAuth = require('../../utils/withAuth');
 
 // GET all ideas
 router.get('/', (req,res) => {
@@ -12,7 +13,7 @@ router.get('/', (req,res) => {
 })
 
 // POST to Create Idea 
-router.post('/' , (req, res) => {
+router.post('/' , withAuth, (req, res) => {
     // Expects { title: , coding_languages: , text: , }
     // Should this route also expect { keywords: , userkey: ,? }
     Idea.create({
@@ -73,7 +74,7 @@ router.get('/:id', (req, res) => {
     });
 
 // PUT to Update Idea
-router.put('/edit/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Idea.update(req.body, {
         where: {
             id: req.params.id
@@ -96,7 +97,7 @@ router.put('/edit/:id', (req, res) => {
 });
 
 // DELETE to Remove Idea  
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Idea.destroy({
         where: {
             id: req.params.id

@@ -3,14 +3,13 @@ async function sendMessageHandler() {
     const text = document.querySelector('#messagefield').value.trim();
     const receiver = document.querySelector('#user_id');
     const receiver_key = receiver.dataset.user;
-    const talksWithId = receiver.dataset.user;
 
     
 
     if (text) {
         const response = await fetch('/api/conversations', {
             method: 'post',
-            body: JSON.stringify({ text, receiver_key, talksWithId }),
+            body: JSON.stringify({ text, receiver_key }),
             headers: { 'Content-Type': 'application/json'}
         });
 

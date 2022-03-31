@@ -8,10 +8,25 @@
             <h3>Message from {{user.name}}:</h3>
             <h6 class="codertexttime">{{created_at}}</h6>
             <span class="codertext">{{text}}</span>
-            <div class="intro">
+            {{!-- <div class="intro">
                 <button id="reply">Reply -></button>
-            </div>
+            </div> --}}
         </div>
+        <h6 data-user="{{user.id}}" id="user_id"><button id="contact">Respond to {{user.name}}</button></h6>
+
+            <section class="commentform">
+                <div>
+                    <div>
+                        <textarea class="medtext" name="messagefield" id="messagefield"></textarea>
+                    </div>
+                    <div>
+                        <label for="messagesubmit">Submit your helpful reply:</label>
+                    </div>
+                    <div class="submitbutton">
+                        <button id="messagesubmit">Reply -></button>
+                    </div>
+                </div>
+            </section>
         {{/each}}
         {{/if}}
 
@@ -35,4 +50,6 @@
 </div>
 
 <script src="/assets/js/logout.js"></script>
-{{!-- <script src="/assets/js/receiveMessage.js"></script> --}}
+{{#if user.conversations.length}}
+<script src="/assets/js/sendMessage.js"></script>
+{{/if}}
