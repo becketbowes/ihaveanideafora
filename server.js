@@ -21,7 +21,6 @@ const sess = {
 
 app.use(session(sess));
 
-// helpers will go here!
 const hbs = exphbs.create({});
 
 app.engine("handlebars", hbs.engine);
@@ -31,7 +30,6 @@ app.set("views", __dirname + "/Views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "Views/public")));
-// app.use(express.static(path.join(__dirname, "Views/public/assets/css/stylelight.css")));
 
 app.use(require("./Controller/"));
 
