@@ -185,6 +185,11 @@ textarea {
     margin-top: 55px;
 }
 
+.signupbutton {
+    text-align: left;
+    align-items: left;
+    align-content: left;
+}
 
 
 footer {
