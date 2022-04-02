@@ -4,7 +4,7 @@ async function sendMessageHandler() {
     const receiver = document.querySelector('#user_id');
     const receiver_key = receiver.dataset.user;
 
-    
+    console.log("click")
 
     if (text) {
         const response = await fetch('/api/conversations', {
