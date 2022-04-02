@@ -2,6 +2,8 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const cloudinary = require("cloudinary");
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,7 +12,7 @@ const sequelize = require("./Controller/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sess = {
-  secret: "I'm a million years old",
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -19,7 +21,15 @@ const sess = {
   }),
 };
 
+cloudinary.config({
+  cloud_name: 'ideafora',
+  apikey: process.env.CLOUDKEY,
+  api_secret: process.env.CLOUDSECRET,
+  secure: true
+});
+
 app.use(session(sess));
+app.use(cloudinary);
 
 const hbs = exphbs.create({});
 
