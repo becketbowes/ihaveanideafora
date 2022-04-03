@@ -36,7 +36,7 @@ h3 {
 h5 {
     color: var(--lightish);
 }
- 
+
 h6 {
     font-weight: 200;
     color: var(--lightish);
@@ -107,6 +107,7 @@ button, a {
 }
 
 select {
+    padding-top: 2px;
     margin-top: 11px;
     margin-bottom: 11px;
     border: none;
@@ -116,6 +117,8 @@ select {
     color: var(--dark);
     text-shadow: 0px 0px 1px var(--darkish);
 }
+
+
 
 .findation {
     margin-top: 50px;
@@ -186,6 +189,41 @@ textarea {
     height: 300px;
 }
 
+.left {
+    text-align: right;
+    width: 50%;
+}
+
+.right {
+    text-align: left;
+    width: 50%;
+}
+
+.update {
+    margin: 50px 0 0 0;
+}
+
+.label {
+    height: 30px;
+}
+
+.input {
+    height: 30px;
+}
+
+#update-username {
+    height: auto;
+}
+
+#update-role {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark);
+    color: var(--light);
+    height: auto;
+    width: auto;
+}
+
 #logout {
     text-align: right;
     padding-bottom: 20px;
@@ -215,5 +253,4 @@ footer {
     align-items: center;
     text-align: center;
 }
-
 }
