@@ -1,7 +1,7 @@
 # ideafora 1.0
-  ![MIT Open License, Sun Apr 03 2022 02:41:24 GMT-0400 (Eastern Daylight Time)](./views/public/assets/img/readme/mit.svg.png)
+  ![MIT Open License, Sun Apr 03 2022 02:41:24 GMT-0400 (Eastern Daylight Time)](./Views/public/assets/img/readme/mit.svg.png)
 
-  ![ideafora screenshot](./views/public/assets/img/readme/ideaforareadmejpg.jpg)
+  ![ideafora screenshot](./Views/public/assets/img/readme/ideaforareadmejpg.jpg)
 
   ## OVERVIEW:
    This is a mobile friendly website that organizes user generated ideas in a format that allows other users to give feedback and collaborate. As people who have ideas, we want to share them. As people who code, we want to find projects to work on that would interest us. And as bystanders, we want to see the breadth and depth of ideas out there. This solves a market problem in terms of interest and compatability with coding projects and coders - matching coders with projects that are inherently motivational and thus creating better code and better projects. A site is only as good as its users, so setting 'the vibe' and guiding input is important to building the community that you want to cultivate, both in influencing existing users, and attracting interesting new users.
