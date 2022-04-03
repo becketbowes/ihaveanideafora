@@ -73,16 +73,7 @@ textarea {
     text-align: center;
 }
 
-.welcome {
-    margin-top: 20px;
-    align-content: center;
-    padding-left: 10%;
-    padding-right: 10%;
-}
 
-.welcomein {
-    width: 80%;
-}
 
 .contain {
     display: flex;
@@ -167,6 +158,25 @@ article {
 footer {
     margin-top: 130px;
     text-align: right;
+}
+
+.welcome {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    align-content: center;
+
+}
+
+.welcomein {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.loginbutton,
+.signupbutton {
+    text-align: left;
 }
 
 /*media queries*/

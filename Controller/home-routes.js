@@ -138,7 +138,46 @@ router.get('/user', withAuth, (req,res) => {
     });
 });
 
+router.get('/useredit', withAuth, (req,res) => { 
+    User.findOne({
+        where: {
+            id: req.session.userkey
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // keys: 'receiverKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+                include: {
+                    model: Comment,
+                    attributes: ['text', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['name']
+                    }
+                }
+            }
+        ]
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        
+   
+        res.render('useredit', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
 router.get('/user/:id', withAuth, (req,res) => { 
+
     User.findOne({
         where: {
             id: req.params.id
