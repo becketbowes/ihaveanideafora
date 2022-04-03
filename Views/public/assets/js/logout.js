@@ -1,5 +1,3 @@
-// const { json } = require("express/lib/response");
-
 async function logout() {
     const response = await fetch('/api/users/logout', {
         method: 'post',

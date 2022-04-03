@@ -14,8 +14,6 @@ router.get('/', (req,res) => {
 
 // POST to Create Idea 
 router.post('/' , withAuth, (req, res) => {
-    // Expects { title: , coding_languages: , text: , }
-    // Should this route also expect { keywords: , userkey: ,? }
     Idea.create({
         title: req.body.title,
         coding_languages: req.body.coding_languages,
@@ -38,8 +36,6 @@ router.get('/:id', (req, res) => {
     Idea.findOne({
         where: {
             id: req.params.id,
-            // username: req.params.username,
-            // keywords: req.params.keywords
         },
         attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
         include: [
@@ -62,9 +58,6 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No idea found with this information' });
                 return;
             }
-
-            // const idea = dbIdeaData.get({ plain: true })
-            // res.render('idea', { idea, lightpage: true })
             res.json(dbIdeaData);
         })
         .catch(err => {
@@ -85,9 +78,6 @@ router.put('/:id', withAuth, (req, res) => {
             res.status(404).json({ message: 'No idea found with this information' });
         }
 
-        // const idea = dbIdeaData.get({ plain: true })
-
-        // res.render('edit', { idea, lightpage: true });
         res.json(dbIdeaData);
     })
     .catch(err => {

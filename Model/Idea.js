@@ -53,12 +53,10 @@ Idea.init(
         },
         coding_languages: {
             type: DataTypes.STRING,
-            // Will pick from dropdown?
             allowNull: true
         },
         keywords: {
             type: DataTypes.STRING,
-            // Should this be string
             allowNull: true
         },
         short_text: {
@@ -68,9 +66,6 @@ Idea.init(
         text: {
             type: DataTypes.TEXT,
             allowNull: true,
-            // validate: {
-            //     len: [1]
-            // }
         },
         idea_type: {
             type: DataTypes.STRING,

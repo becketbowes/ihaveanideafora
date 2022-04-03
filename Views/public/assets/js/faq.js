@@ -1,11 +1,7 @@
-//make new conversation with user id and admin id as keys
-
 async function messageAdminHandler() {
 
     const text = document.querySelector('#contactadmin').value.trim();
     const receiver_key = 1;
-
-    
 
     if (text) {
         const response = await fetch('/api/conversations', {
@@ -16,24 +12,22 @@ async function messageAdminHandler() {
 
         if (response.ok) {
             document.location.reload();
-            // send feedback of message sent
         } else {
             alert(response.statusText);
         }
     }
 }
 
-// function openTextarea() {
+function openTextarea() {
 
-//     const div = document.querySelector('#message_user');
-//     if (div.style.display = "none") {
-//         div.style.display = "block"
-//         document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
-//     } else {
-//         div.style.display = "none";
-//     }
-// }
+    console.log("click")
+    const div = document.querySelector('#contact-admin-section');
+    if (div.style.display = "none") {
+        div.style.display = "block"
+        document.querySelector('#contactadminsubmit').addEventListener("click", messageAdminHandler);
+    } else {
+        div.style.display = "none";
+    }
+}
 
-// document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
-
-document.querySelector('#contactadminsubmit').addEventListener("click", messageAdminHandler);
+document.querySelector('#contactadmin-btn').addEventListener("click", openTextarea);

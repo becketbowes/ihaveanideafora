@@ -14,7 +14,6 @@ async function sendMessageHandler() {
         if (response.ok) {
             console.log(receiver_key + ": " + text);
             document.location.reload();
-            // send feedback of message sent
         } else {
             alert(response.statusText);
         }
@@ -31,7 +30,5 @@ function openTextarea() {
         div.style.display = "none";
     }
 }
-
-// document.querySelector('#messagesubmit').addEventListener("click", sendMessageHandler);
 
 document.querySelector('#contact').addEventListener("click", openTextarea);

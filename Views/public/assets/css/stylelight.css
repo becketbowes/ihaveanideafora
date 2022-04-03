@@ -40,7 +40,7 @@ h3 {
 h5 {
     color: var(--darkish);
 }
- 
+
 h6 {
     font-weight: 200;
     color: var(--darkish);
@@ -72,8 +72,6 @@ textarea {
     align-items: center;
     text-align: center;
 }
-
-
 
 .contain {
     display: flex;
@@ -170,7 +168,6 @@ footer {
     display: flex;
     margin-top: 20px;
     align-content: center;
-
 }
 
 .welcomein {
@@ -189,6 +186,5 @@ footer {
 
     .navigate {
         flex-direction: column;
-    }    
-    
+        }    
     }

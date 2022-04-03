@@ -66,7 +66,6 @@ router.get('/idea/:id', (req, res) => {
             const idea = dbIdeaData.get({ plain: true })
 
             res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
-            // res.json(dbIdeaData);
         })
         .catch(err => {
             console.log(err);
@@ -111,7 +110,6 @@ router.get('/user', withAuth, (req,res) => {
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
-                    // keys: 'receiverKey'
                 }
             },
             {
@@ -134,42 +132,6 @@ router.get('/user', withAuth, (req,res) => {
         res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });
 });
-
-// router.get('/useredit', withAuth, (req,res) => { 
-//     User.findOne({
-//         where: {
-//             id: req.session.userkey
-//         },
-//         attributes: ['id', 'name', 'image', 'role', 'aboutme'],
-//         include: [
-//             {
-//                 model: Conversation,
-//                 attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
-//                 include: {
-//                     model: User,
-//                     attributes: ['id', 'name'],
-//                     // keys: 'receiverKey'
-//                 }
-//             },
-//             {
-//                 model: Idea,
-//                 attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
-//                 include: {
-//                     model: Comment,
-//                     attributes: ['text', 'created_at'],
-//                     include: {
-//                         model: User,
-//                         attributes: ['name']
-//                     }
-//                 }
-//             }
-//         ]
-//     })
-//     .then(dbUserData => {
-//         const user = dbUserData.get({ plain: true });
-//         res.render('useredit', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
-//     });
-// });
 
 router.get('/user/:id', withAuth, (req,res) => { 
 
