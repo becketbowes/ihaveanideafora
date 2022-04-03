@@ -2,7 +2,6 @@ const cloudName = "ideafora"; // replace with your own cloud name
 const uploadPreset = "ideafora_format"; // replace with your own upload preset
 const userNameId = document.querySelector('#userinfo'); // get user name and id from document
 
-
 const imageDrop = cloudinary.createUploadWidget(
   {
     cloudName: cloudName,
@@ -10,6 +9,12 @@ const imageDrop = cloudinary.createUploadWidget(
     cropping: true, 
     showSkipCropButton: false,
     croppingAspectRatio: 1,
+    thumbnailTransformation: [
+      { width: 300, height: 300, crop: 'limit'},
+      {effect: "audrey"},
+      {effect: "vectorize:colors:4:detail:0.1"},
+      {effect: "replace_color:blue:50"}
+    ],
     multiple: false, 
     folder: "userimg", //upload files to the specified folder
     tags: [userNameId.user], //add the given tags to the uploaded files
@@ -45,9 +50,19 @@ const imageDrop = cloudinary.createUploadWidget(
   (err, res) => {
     if (!err && res && res.event === "success") {
       console.log("Done! Here is the image info: ", res.info);
+      // cloudinary.image(res.info.secure_url, {transformation: [
+      //   {effect: audrey},
+      //   {effect: "vectorize:colors:4:detail:0.5"},
+      //   {effect: "replace_color:blue:50"}
+      // ]})
       document
         .getElementById("uploadedimage")
         .setAttribute("src", res.info.secure_url);
+        // cloudinary.image(res.info.secure_url, {transformation: [
+        //   {effect: audrey},
+        //   {effect: "vectorize:colors:4:detail:0.5"},
+        //   {effect: "replace_color:blue:50"}
+        // ]})
       // document.location.reload();
         // // THIS !!!
         // //how do i make this a secure url? also, make this function?

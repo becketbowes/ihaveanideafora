@@ -55,3 +55,11 @@ const imageDrop = cloudinary.createUploadWidget(
 );
 
 document.getElementById("upload_widget").addEventListener("click", function () { imageDrop.open(); },false);
+
+
+
+// cloudinary.image("image.url", {transformation: [
+//   {effect: audrey},
+//   {effect: "vectorize:colors:4:detail:0.5"}
+//   {effect: "replace_color:blue:50"}
+// ]})
