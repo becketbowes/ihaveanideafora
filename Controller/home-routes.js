@@ -133,28 +133,60 @@ router.get('/user', withAuth, (req,res) => {
     })
     .then(dbUserData => {
         const user = dbUserData.get({ plain: true });
-        
     
         res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });
 });
 
-router.get('/user/:id', (req,res) => { 
+router.get('/useredit', withAuth, (req,res) => { 
+    User.findOne({
+        where: {
+            id: req.session.userkey
+        },
+        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['id', 'name'],
+                    // keys: 'receiverKey'
+                }
+            },
+            {
+                model: Idea,
+                attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
+                include: {
+                    model: Comment,
+                    attributes: ['text', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['name']
+                    }
+                }
+            }
+        ]
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        
+   
+        res.render('useredit', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
+router.get('/user/:id', withAuth, (req,res) => { 
+
     User.findOne({
         where: {
             id: req.params.id
         },
         attributes: ['id', 'name', 'image', 'role', 'aboutme'],
-        // [sequelize.literal('(SELECT * FROM conversation WHERE conversation.receiver_key = user.id)'), 'test']
         include: [
             {
                 model: Conversation,
                 attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
-                // include: {
-                //     model: User,
-                //     attributes: ['id', 'name'],
-                //     // keys: 'receiver_key'
-                // }
             },
             {
                 model: Idea,
@@ -164,9 +196,58 @@ router.get('/user/:id', (req,res) => {
     })
     .then(dbUserData => {
         const user = dbUserData.get({ plain: true });
-        // const newmessages = 
         res.json(dbUserData);
-        // res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
+// THE NEW GET ROUTES
+router.get('/user-update/', withAuth, (req,res) => { 
+    User.findOne({
+        where: {
+            id: req.session.userkey
+        },
+        attributes: ['id', 'email', 'name', 'image', 'role', 'aboutme']
+    })
+    .then(dbUserData => {
+        const user = dbUserData.get({ plain: true });
+        res.render('user-update', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
+    });
+});
+
+// THE NEW PUT ROUTE
+router.put('/user-update', withAuth, (req,res) => { 
+    User.update( { role: req.body.role,  }, {
+        individualHooks: true,
+        where: {
+            id: req.session.userkey,
+
+        }
+    })
+    .then(dbUserData => {
+        // const user = dbUserData.get({ plain: true });
+        res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.put('/user-update-image', withAuth, (req,res) => { 
+    User.update( { image: req.body.image }, {
+        individualHooks: true,
+        where: {
+            id: req.session.userkey,
+
+        }
+    })
+    .then(dbUserData => {
+        // const user = dbUserData.get({ plain: true });
+        res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 

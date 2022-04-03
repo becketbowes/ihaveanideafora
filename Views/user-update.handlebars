@@ -1,0 +1,36 @@
+<div class="pagebody">
+    <div class="pagecontent">
+        <h2 class="intro">Update {{user.name}}:</h2>
+        <h4>update profile picture:</h4>
+        
+        <img width="100px" id="uploadedimage" src="{{user.image}}" alt="profile-picture"/>
+        
+        <button id="addimage">Upload Profile Image-></button>
+        {{!--  --}}
+        {{!-- Cloudinary Input Here --}}
+        {{!--  --}}
+        <h4>update about me:</h4>
+        <textarea class="bigtext" id="aboutme-text">{{user.aboutme}}</textarea>
+        
+        <nav class="update">
+        <span class="left">
+            <div class="label" id="nudgedown"><label for="update-username">update username:</label></div>
+            <div class="label"><label for="update-role">update role:</label></div>
+        </span>
+        <span class="right">
+            <div class="input"><input type="text" id="update-username" value="{{user.name}}"></div>
+            <div class="input">
+                <select type="text" id="update-role" data-role="{{user.role}}">
+                    <option value="inventor">Inventor</option>
+                    <option value="coder">Coder</option>
+                    <option value="both">Both</option>
+                </select>
+            </div>
+        </span>
+        </nav>
+        <button id="update-user-info">Update User profile -></button>
+    </div>
+</div>
+
+<script src="/assets/js/update.js"></script>
+<script src="/assets/js/cloudinary.js"></script> 

@@ -1,43 +1,24 @@
 <div class="pagebody">
-    <div class="pagecontent">
+    <div class="pagecontent" id="userinfo" data-user="{{user.name}}{{user.id}}">
         <button id="logout">Logout -></button>
-        {{#if user.conversations.length}}
-        <div class="intro">You have New Messages, {{user.name}}!</div>
-        {{#each user.conversations as |conversation|}}
-        <div>
-            <h3>Message from {{user.name}}:</h3>
-            <h6 class="codertexttime">{{created_at}}</h6>
-            <span class="codertext">{{text}}</span>
-        </div>
-        <h6 data-user="{{user.id}}" id="user_id"><button id="contact">Respond to {{user.name}} -></button></h6>
-
-            <section class="commentform start-hidden" id="message_user">
-                <div>
-                    <div>
-                        <textarea class="medtext" name="messagefield" id="messagefield"></textarea>
-                    </div>
-                    <div>
-                        <label for="messagesubmit">Submit your helpful reply:</label>
-                    </div>
-                    <div class="submitbutton">
-                        <button id="messagesubmit">Reply -></button>
-                    </div>
-                </div>
-            </section>
-        {{/each}}
-        {{/if}}
 
         <h3>About {{user.name}}:</h3>
 
-        <a href="/user-update"><h3>Edit Profile-></h3></a>
-
-        {{#if user.image}}
+        {{!-- {{#if user.image}} --}}
             <img width="100px" src="{{user.image}}" alt="profile-picture"/>
-        {{/if}}
+            <button id="editimage">Edit Profile Image-></button>
+        {{!-- {{else}} --}}
+            <img id="uploadedimage" src=""></img> 
+
+    <!-- cloudinary upload widget -->
+    {{!-- <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script> --}}
+            <button id="addimage">Upload Profile Image-></button>
+        {{!-- {{/if}} --}}
+
         {{#if user.aboutme}}
             <h5>{{user.aboutme}}</h5>
         {{/if}}
-        <a href="/user-update">Update User profile -></a>
+        <button id="editaboutme">Write or Edit AboutMe -></button>
 
         {{#if user.ideas.length}}
         <h6>
@@ -70,6 +51,7 @@
                     <span>-----</span>
                 </article>
             </div>    
+            <button id="editidea">Edit Idea -></button>
         </a>
         {{/each}}
         </section>
@@ -77,8 +59,9 @@
     </div>
 </div>
 
+<script src="/assets/js/cloudinary.js"></script>  
 <script src="/assets/js/logout.js"></script>
-{{#if user.conversations.length}}
+{{!-- {{#if user.conversations.length}}
 <script src="/assets/js/sendMessage.js"></script>
 {{/if}}
-<script src="/assets/js/seeIdeas.js"></script>
+<script src="/assets/js/seeIdeas.js"></script> --}}
