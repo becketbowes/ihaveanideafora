@@ -2,12 +2,10 @@
     <div class="pagecontent">
         <h2 class="intro">Update {{user.name}}:</h2>
         <h4>update profile picture:</h4>
-        {{#if user.image}}
-        <img width="100px" src="{{user.image}}" alt="profile-picture"/>
-        {{else}}
-        <img width="100px" id="uploadedimage" src=""></img>
+        
+        <img width="100px" id="uploadedimage" src="{{user.image}}" alt="profile-picture"/>
+        
         <button id="addimage">Upload Profile Image-></button>
-        {{/if}}
         {{!--  --}}
         {{!-- Cloudinary Input Here --}}
         {{!--  --}}

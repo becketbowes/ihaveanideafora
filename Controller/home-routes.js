@@ -216,10 +216,29 @@ router.get('/user-update/', withAuth, (req,res) => {
 
 // THE NEW PUT ROUTE
 router.put('/user-update', withAuth, (req,res) => { 
-    User.update( req.body, {
+    User.update( { role: req.body.role,  }, {
         individualHooks: true,
         where: {
             id: req.session.userkey,
+
+        }
+    })
+    .then(dbUserData => {
+        // const user = dbUserData.get({ plain: true });
+        res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.put('/user-update-image', withAuth, (req,res) => { 
+    User.update( { image: req.body.image }, {
+        individualHooks: true,
+        where: {
+            id: req.session.userkey,
+
         }
     })
     .then(dbUserData => {
