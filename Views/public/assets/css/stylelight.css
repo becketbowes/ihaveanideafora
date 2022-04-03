@@ -145,6 +145,11 @@ button, a {
     font-weight: 500;
 }
 
+.loginbutton,
+.signupbutton {
+    width: auto;
+}
+
 select {
     padding-top: 2px;
     border: none;
