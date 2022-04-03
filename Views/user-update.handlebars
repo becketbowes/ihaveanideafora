@@ -2,7 +2,10 @@
     <div class="pagecontent">
         <h2 class="intro">Update {{user.name}}:</h2>
         <h4>update profile picture:</h4>
-        <img width="100px" src="{{user.image}}" alt="profile-picture"/>
+        
+        <img width="100px" id="uploadedimage" src="{{user.image}}" alt="profile-picture"/>
+        
+        <button id="addimage">Upload Profile Image-></button>
         {{!--  --}}
         {{!-- Cloudinary Input Here --}}
         {{!--  --}}
@@ -30,3 +33,4 @@
 </div>
 
 <script src="/assets/js/update.js"></script>
+<script src="/assets/js/cloudinary.js"></script> 
