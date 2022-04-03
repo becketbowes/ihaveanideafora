@@ -22,23 +22,23 @@ const imageDrop = cloudinary.createUploadWidget(
       palette: {
         window: "#EBEDFF",
         windowBorder: "#EBEDFF",
-        tabIcon: "#00053E",
+        tabIcon: "#000326",
         menuIcons: "#EBEDFF",
-        textDark: "#00053E",
+        textDark: "#000326",
         textLight: "#EBEDFF",
-        link:  "#00053E",
-        action:  "#00053E",
-        inactiveTabIcon: "#00053E",
-        error: "#00053E",
+        link:  "#000326",
+        action:  "#000326",
+        inactiveTabIcon: "#000326",
+        error: "#000326",
         inProgress: "#EBEDFF",
         complete: "#EBEDFF",
-        sourceBg: "#00053E"
+        sourceBg: "#000326"
       },
       frame: {
         background: "#EBEDFF"
       },
       fonts: {
-          "'Inconsolata', 600": "https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap",
+          "'Inconsolata', 600": "https://fonts.googleapis.com/css2?family=Inconsolata:wght@600",
       }
   }
   },
@@ -48,7 +48,7 @@ const imageDrop = cloudinary.createUploadWidget(
       document
         .getElementById("uploadedimage")
         .setAttribute("src", res.info.secure_url);
-      document.location.reload();
+      // document.location.reload();
         // // THIS !!!
         // //how do i make this a secure url? also, make this function?
         // .setAttribute("src", res.info.secure_url/userimg/(userNameId.user));;
