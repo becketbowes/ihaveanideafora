@@ -211,6 +211,10 @@ textarea {
     height: 30px;
 }
 
+#update-username {
+    height: auto;
+}
+
 #update-role {
     margin: 0;
     padding: 0;

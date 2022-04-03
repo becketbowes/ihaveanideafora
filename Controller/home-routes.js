@@ -174,27 +174,22 @@ router.get('/user-update/', withAuth, (req,res) => {
         res.render('user-update', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });
 });
+
 // THE NEW PUT ROUTE
-router.put('/user-update/:id', withAuth, (req,res) => { 
-    User.findOne({
+router.put('/user-update', withAuth, (req,res) => { 
+    User.update( req.body, {
+        individualHooks: true,
         where: {
-            id: req.params.id
-        },
-        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
-        include: [
-            {
-                model: Conversation,
-                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
-            },
-            {
-                model: Idea,
-                attributes: ['id', 'title', 'short_text']
-            }
-        ]
+            id: req.session.userkey,
+        }
     })
     .then(dbUserData => {
-        const user = dbUserData.get({ plain: true });
+        // const user = dbUserData.get({ plain: true });
         res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 

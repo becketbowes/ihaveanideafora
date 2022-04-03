@@ -12,27 +12,20 @@
         <nav class="update">
         <span class="left">
             <div class="label" id="nudgedown"><label for="update-username">update username:</label></div>
-            <div class="label"><label for="update-email">update email:</label></div>
-            <div class="label"><label for="update-password">update password:</label></div>
             <div class="label"><label for="update-role">update role:</label></div>
-            <div class="label"><label for="current-password">* old password:</label></div>
         </span>
         <span class="right">
-            <div class="input"><input type="text" id="update-username"></div>
-            <div class="input"><input type="email" id="update-email"></div>
-            <div class="input"><input type="text" id="update-password"></div>
+            <div class="input"><input type="text" id="update-username" value="{{user.name}}"></div>
             <div class="input">
-                <select type="text" id="update-role">
+                <select type="text" id="update-role" data-role="{{user.role}}">
                     <option value="inventor">Inventor</option>
                     <option value="coder">Coder</option>
                     <option value="both">Both</option>
                 </select>
             </div>
-            <div class="input"><input type="password" id="current-password"></div>
         </span>
         </nav>
-        <button id="update-aboutme">Update User profile -></button>
-
+        <button id="update-user-info">Update User profile -></button>
     </div>
 </div>
 
