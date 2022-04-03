@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('./connection');
-const { Idea, User, Comment, Upvote, Conversation } = require('../Model');
+const { Idea, User, Comment, Conversation } = require('../Model');
 const withAuth = require('../utils/withAuth');
 
 router.get('/', (req,res) => {
@@ -17,14 +17,11 @@ router.get('/', (req,res) => {
                     model: User,
                     attributes: ['name']
                 }
-                // attributes: ['id']
-                // to identify # of Comments per post?
             }
         ]
     })
     .then(dbIdeaData => {
         const ideas = dbIdeaData.map(idea => idea.get({ plain: true })).reverse();
-        // const lightPage = true;
 
         res.render('ideas', { 
             ideas, 
@@ -69,7 +66,6 @@ router.get('/idea/:id', (req, res) => {
             const idea = dbIdeaData.get({ plain: true })
 
             res.render('idea', { idea, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username })
-            // res.json(dbIdeaData);
         })
         .catch(err => {
             console.log(err);
@@ -114,7 +110,6 @@ router.get('/user', withAuth, (req,res) => {
                 include: {
                     model: User,
                     attributes: ['id', 'name'],
-                    // keys: 'receiverKey'
                 }
             },
             {
@@ -135,44 +130,6 @@ router.get('/user', withAuth, (req,res) => {
         const user = dbUserData.get({ plain: true });
     
         res.render('user', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
-    });
-});
-
-router.get('/useredit', withAuth, (req,res) => { 
-    User.findOne({
-        where: {
-            id: req.session.userkey
-        },
-        attributes: ['id', 'name', 'image', 'role', 'aboutme'],
-        include: [
-            {
-                model: Conversation,
-                attributes: ['id', 'text', 'receiver_key', 'sender_key', 'read', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['id', 'name'],
-                    // keys: 'receiverKey'
-                }
-            },
-            {
-                model: Idea,
-                attributes: ['id', 'title', 'coding_languages', 'keywords', 'short_text', 'text', 'idea_type', 'offer_type', 'userkey', 'created_at'],
-                include: {
-                    model: Comment,
-                    attributes: ['text', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['name']
-                    }
-                }
-            }
-        ]
-    })
-    .then(dbUserData => {
-        const user = dbUserData.get({ plain: true });
-        
-   
-        res.render('useredit', { user, lightpage: false, loggedIn: req.session.loggedIn, username: req.session.username });
     });
 });
 
@@ -200,7 +157,6 @@ router.get('/user/:id', withAuth, (req,res) => {
     });
 });
 
-// THE NEW GET ROUTES
 router.get('/user-update/', withAuth, (req,res) => { 
     User.findOne({
         where: {
@@ -214,17 +170,14 @@ router.get('/user-update/', withAuth, (req,res) => {
     });
 });
 
-// THE NEW PUT ROUTE
 router.put('/user-update', withAuth, (req,res) => { 
-    User.update( { role: req.body.role,  }, {
+    User.update( { role: req.body.role, aboutme: req.body.aboutme, name: req.body.name }, {
         individualHooks: true,
         where: {
             id: req.session.userkey,
-
         }
     })
     .then(dbUserData => {
-        // const user = dbUserData.get({ plain: true });
         res.json(dbUserData);
     })
     .catch(err => {
@@ -238,11 +191,9 @@ router.put('/user-update-image', withAuth, (req,res) => {
         individualHooks: true,
         where: {
             id: req.session.userkey,
-
         }
     })
     .then(dbUserData => {
-        // const user = dbUserData.get({ plain: true });
         res.json(dbUserData);
     })
     .catch(err => {

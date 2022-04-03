@@ -1,7 +1,3 @@
-//if offer-type is paid, make sure amount is selected and then .join offer type with offer amount to return as value to database
-
-//onclick 'submit' put call to make new idea
-
 async function postIdeaHandler(event) {
     event.preventDefault();
 
@@ -9,7 +5,6 @@ async function postIdeaHandler(event) {
     const coding_languages = document.querySelector('#coding-languages').value;
     const offer_type = document.querySelector('#offer-type').value;
     const offer_value = document.querySelector('#offer-value').value;
-    // const offer_type = offer_class + ": " + offer_value;    
     const idea_type = document.querySelector('#idea-type').value;
     const keywords_string = document.querySelector('#keywords').value.trim();
     const keywords = keywords_string;
@@ -24,7 +19,6 @@ async function postIdeaHandler(event) {
             }),
             headers: { 'Content-Type': 'application/json'}
         });
-
         if (response.ok) {
             document.location.assign('/');
         } else {

@@ -1,5 +1,4 @@
 async function update() {
-    const picture = "";
     const aboutme = document.querySelector('#aboutme-text').value.trim();
     const name = document.querySelector('#update-username').value.trim();
     const role = document.querySelector('#update-role').value.trim();
@@ -13,12 +12,10 @@ async function update() {
 
         if (response.ok) {
             document.location.assign('/user');
-            // console.log("success")
         } else {
             alert(response.statusText);
         }
     }
-
 }
 
 function setRole() {

@@ -5,7 +5,6 @@ const withAuth = require('../../utils/withAuth');
 
 // GET to Find All Users 
 router.get('/', (req, res) => {
-    // findAll() Users
     User.findAll({
         attributes: { exclude: ['password'] }
     })
@@ -16,10 +15,8 @@ router.get('/', (req, res) => {
         });
 });
 
-// POST to Create User  
+// POST to Create User, Save Session
 router.post('/', (req, res) => {
-    // Expects { username: , email: , password: }
-    // (add) POST to edit profile. Should this route also expect { role: , image: , and About Me: ,? }
     User.create({
         name: req.body.name,
         email: req.body.email,
@@ -44,6 +41,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// Post Login, Save Session
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
@@ -73,6 +71,7 @@ router.post('/login', (req, res) => {
     });
 });
 
+// Post Logout
 router.post('/logout', withAuth, (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -83,7 +82,7 @@ router.post('/logout', withAuth, (req, res) => {
     }
 });
 
-// GET to Find One User 
+// Get User by ID
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -104,7 +103,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// PUT to Update User 
+// Update User by ID
 router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
         individualHooks: true,
@@ -125,7 +124,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-// DELETE to Remove User  
+// Delete User by ID
 router.delete('/:id', withAuth, (req, res) => {
     User.destroy({ where: { id: req.params.id } })
         .then(data => {

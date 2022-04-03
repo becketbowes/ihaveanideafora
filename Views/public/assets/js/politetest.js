@@ -1,6 +1,3 @@
-//on click 'submitbutton' if textarea .basketarea.value.trim() === rottonbananas res.render composepage else return error
-
-
 function toPostButtonHandler() {
     const answer = document.querySelector('textarea[name="basket"]').value.replace(/\s+/g, '').toLowerCase();
 

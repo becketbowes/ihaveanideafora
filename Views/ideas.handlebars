@@ -14,7 +14,6 @@
             <span>
                 {{short_text}}
             </span>
-            {{!-- <h6><button>-> love it!</button>{{upvote.number}} people loved this</h6> --}}
             {{#if comments.length}}
             <h6>{{comments.[0].user.name}} commented: {{comments.[0].text}} <a id="comment-{{id}}" class="to-comments no-style" href="/idea/{{id}}">see more comments -></a></h6>
             {{else}}
@@ -26,7 +25,3 @@
     </a>
     {{/each}}
 </div>
-
-<script src="/assets/js/ideas.js"></script>
-
-

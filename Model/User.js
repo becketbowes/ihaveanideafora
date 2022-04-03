@@ -25,10 +25,6 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            // validate: {
-            //     isEmail: true
-            // }
-            //Uncomment after testing is done
         },
         password: {
             type: DataTypes.STRING,
@@ -39,12 +35,10 @@ User.init(
         },
         role: {
             type: DataTypes.STRING,
-            //pick from dropdown, idea - 1, coder - 2, both - 3
             allowNull: false,
         },
         image: {
             type: DataTypes.STRING,
-            // stored as a URL for now
             allowNull: true
         },
         aboutme: {
