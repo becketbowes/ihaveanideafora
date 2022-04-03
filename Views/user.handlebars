@@ -29,11 +29,10 @@
 
         <h3>About {{user.name}}:</h3>
 
-        <a href="/user-update"><h3>Edit Profile-></h3></a>
-
         {{#if user.image}}
             <img width="100px" src="{{user.image}}" alt="profile-picture"/>
         {{/if}}
+        <a href="/user-update"><h3>Edit Profile-></h3></a>
         {{#if user.aboutme}}
             <h5>{{user.aboutme}}</h5>
         {{/if}}

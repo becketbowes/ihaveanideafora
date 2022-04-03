@@ -6,6 +6,8 @@
   ## OVERVIEW:
    This is a mobile friendly website that organizes user generated ideas in a format that allows other users to give feedback and collaborate. As people who have ideas, we want to share them. As people who code, we want to find projects to work on that would interest us. And as bystanders, we want to see the breadth and depth of ideas out there. This solves a market problem in terms of interest and compatability with coding projects and coders - matching coders with projects that are inherently motivational and thus creating better code and better projects. A site is only as good as its users, so setting 'the vibe' and guiding input is important to building the community that you want to cultivate, both in influencing existing users, and attracting interesting new users.
 
+   Try ideafora our for yourself here: https://ihaveanideafora.herokuapp.com/
+
   ## Table Of Contents:
   [Installation](README.md#installation)<br>
   [Usage](README.md#usage)<br>
