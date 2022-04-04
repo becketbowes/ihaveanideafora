@@ -29,7 +29,12 @@
   Huge huge thanks to Jordan Schnur, the TA who helped us through the hairy bits, to all the other TAs, Tutors and Diego Struk Jaia, aka ThaProf, as well as the many many coders who made the applications and dependencies upon which this relies. 
 
   ## Questions
-  [Group 3: Lisa Jean, Janelle Phalon, Claudia Davis, Adam Payne, and Becket Bowes](becketbowes@gmail.com)
+  Group 3: 
+  [Lisa Jean,](https://github.com/jeanl87) 
+  [Janelle Phalon,](https://github.com/janellephalon) 
+  [Claudia Davis,](https://github.com/ccd330) 
+  [Adam Payne,](https://github.com/MrSumada) 
+  and [Becket Bowes](becketbowes@gmail.com)
   [Github Page](https://github.com/becketbowes/ihaveanideafora)
 
   ## License
